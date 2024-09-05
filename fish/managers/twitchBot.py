@@ -29,6 +29,7 @@ class TwitchBot(commands.Bot):
         print(reward)
         print(ctx.author.name)
         messages = self.message_builder(reward, ctx.author.name)
+        print(messages[1])
         await ctx.send(messages[0])
         await ctx.send(messages[1])
 
@@ -48,7 +49,7 @@ class TwitchBot(commands.Bot):
                     message[1] = message[1].replace("$value", f"{valstr}")
                 case "timeout":
                     valstr = fishReward.chosenReward["seconds"]
-                    message[1] = message[1].replace("$timeout", f"{valstr}")
+                    message[1] = message[1].replace("$seconds", f"{valstr}")
 
         return message
 
