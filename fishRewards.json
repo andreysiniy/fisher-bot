@@ -1,0 +1,68 @@
+{
+    "base_message": "$user is fishing!! ",
+    "cmds": {
+        "points": "!addpoints $user $value",
+        "timeout": "\/timeout $user $seconds",
+        "vip": "\/vip $user"
+    },
+    "rewards": {
+        "nothing": [
+            {
+                "weight": 300,
+                "message": "NOTHING jonkler 0ALERT jonkler 0ALERT jonkler 0ALERT"
+            },
+            {
+                "weight": 300,
+                "message": "0NotAllowed   0NotAllowed   0NotAllowed"
+            },
+            {
+                "weight": 300,
+                "message": "0 jonkler 0LiveReaction"
+            },
+            {
+                "weight": 300,
+                "message": "0 ! 0NotAllowed"
+            }
+        ],
+        "points": [
+            {
+                "value": 10000,
+                "weight": 300,
+                "message": "COCKA +10K"
+            },
+            {
+                "value": 25000,
+                "weight": 200,
+                "message": "+25K AMAZING!!! Goldge"
+            },
+            {
+                "value": 50000,
+                "weight": 100,
+                "message": "babah +50K babah"
+            },
+            {
+                "value": 100000,
+                "weight": 100,
+                "message": "babah 0ALERT !! +100K !! babah 0ALERT"
+            }
+        ],
+        "timeout": [
+            {
+                "seconds": 300,
+                "weight": 10,
+                "message": "djgruzovik 5m timeout gg"
+            },
+            {
+                "seconds": 60,
+                "weight": 20,
+                "message": "djgruzovik 1m timeout gg"
+            }
+        ],
+        "vip": [
+            {
+                "weight": 1,
+                "message": "Welcome to VIP status!"
+            }
+        ]
+    }
+  }
