@@ -1,5 +1,5 @@
 {
-    "base_message": "$user is fishing!! ",
+    "base_message": "$user is fishing!! !fish Alarm ... ",
     "cmds": {
         "points": "!addpoints $user $value",
         "timeout": "\/timeout $user $seconds",
