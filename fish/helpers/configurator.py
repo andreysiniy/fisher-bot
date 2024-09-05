@@ -14,6 +14,7 @@ class Config:
                 'command-prefix': '!',
                 'token': '',
                 'client-secret': '',
+                'enable-cooldown-msg': False
                 #to be continiued
             }
             self.save()
@@ -22,6 +23,7 @@ class Config:
         self.commandPrefix = self.config.get('TWITCH', 'command-prefix')
         self.token = self.config.get('TWITCH', 'token')
         self.clientSecret = self.config.get('TWITCH', 'client-secret')
+        self.enableCooldownMsg = self.config.getboolean('TWITCH', 'enable-cooldown-msg')
 
     def save(self):
         with open(self.configFile, 'w') as configfile:

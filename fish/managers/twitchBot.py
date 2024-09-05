@@ -18,7 +18,7 @@ class TwitchBot(commands.Bot):
         print(f'User id is | {self.user_id}')
 
     async def event_command_error(self, ctx, error):
-        if isinstance(error, commands.CommandOnCooldown):
+        if isinstance(error, commands.CommandOnCooldown) & self.config.enableCooldownMsg:
          await ctx.send(f'Fishing is tiring man. Try again in {error.retry_after:.2f} seconds.')    
 
     @commands.command()
