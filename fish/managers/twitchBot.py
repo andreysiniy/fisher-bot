@@ -1,6 +1,7 @@
 from twitchio.ext import commands
 from helpers.configurator import Config
 from helpers.fishRewardsConfig import FishRewards
+import helpers.utils as Utils
 
 class TwitchBot(commands.Bot):
     def __init__(self):
@@ -23,9 +24,9 @@ class TwitchBot(commands.Bot):
 
     @commands.command()
     @commands.cooldown(rate=1, per=600, bucket=commands.Bucket.user)
+    @commands.cooldown(rate=1, per=300, bucket=commands.Bucket.subscriber) # does not work how intended 
     async def fish(self, ctx: commands.Context):
-
-        reward = FishRewards()
+        reward = FishRewards(chatterRole="sub" if ctx.author.is_broadcaster else "unsub")
         print(reward)
         print(ctx.author.name)
         messages = self.message_builder(reward, ctx.author.name)
@@ -33,24 +34,18 @@ class TwitchBot(commands.Bot):
         await ctx.send(messages[0])
         await ctx.send(messages[1])
 
-
     @staticmethod
     def message_builder(fishReward: FishRewards, user: str):
         message = ["", ""]
-        message[0] = fishReward.rewardsJSON["base_message"]
-        message[0] = message[0].replace("$user", user)
-        message[0] += fishReward.chosenReward["message"]
-        if fishReward.chosenReward["cmd"] != "":
-            message[1] = fishReward.chosenReward["cmd"]
-            message[1] = message[1].replace("$user", user)
-            match fishReward.chosenReward["type"]:
-                case "points":
-                    valstr = fishReward.chosenReward["value"]
-                    message[1] = message[1].replace("$value", f"{valstr}")
-                case "timeout":
-                    valstr = fishReward.chosenReward["seconds"]
-                    message[1] = message[1].replace("$seconds", f"{valstr}")
-
+        valueMsg = 0
+        minutesMsg = 0         
+        message[0] = fishReward.rewardsJSON["base_message"].format(username = user) 
+        if fishReward.chosenReward["type"] == "points":
+            message[1] = fishReward.chosenReward["cmd"].format(username = user, value = fishReward.chosenReward["value"])
+            valueMsg = Utils.format_number(fishReward.chosenReward["value"] / 1000)    
+        elif fishReward.chosenReward["type"] == "timeout":
+            message[1] = fishReward.chosenReward["cmd"].format(username = user) # !timeout 
+            minutesMsg = Utils.format_number(fishReward.chosenReward["seconds"] / 60)
+        message[0] += fishReward.chosenReward["message"].format(username = user, value = valueMsg, minutes = minutesMsg)
+        print(message[0])
         return message
-
-        
