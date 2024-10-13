@@ -14,7 +14,6 @@ class FishRewards:
         if self.chatterRole == "sub":
             self.multiplier = self.rewardsJSON["sub_multiplier"]
         self.chosenReward = self.choose_default_reward()
-        print(self.multiplier)
 
     def choose_default_reward(self):
         all_rewards = []
@@ -27,11 +26,8 @@ class FishRewards:
                 weights.append(reward["weight"])
                 types.append(key)
 
-
-
         chosen_reward = random.choices(all_rewards, weights=weights, k=1)[0]
         chosen_type = types[all_rewards.index(chosen_reward)]
-
 
         chosen_reward["type"] = chosen_type
         if chosen_type != "nothing":
@@ -41,7 +37,6 @@ class FishRewards:
         
         if chosen_reward["type"] == "points":
             chosen_reward["value"] *= self.multiplier 
-        print(chosen_reward)
         return chosen_reward
 
 #for i in range(2000):

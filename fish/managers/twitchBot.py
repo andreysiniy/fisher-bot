@@ -24,7 +24,6 @@ class TwitchBot(commands.Bot):
 
     @commands.command()
     @commands.cooldown(rate=1, per=600, bucket=commands.Bucket.user)
-    @commands.cooldown(rate=1, per=300, bucket=commands.Bucket.subscriber) # does not work how intended 
     async def fish(self, ctx: commands.Context):
         reward = FishRewards(chatterRole="sub" if ctx.author.is_subscriber else "unsub")
         print(reward)
