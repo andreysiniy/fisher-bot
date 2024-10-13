@@ -34,6 +34,19 @@ class TwitchBot(commands.Bot):
         await ctx.send(messages[0])
         await ctx.send(messages[1])
 
+    @commands.command()
+    @commands.cooldown(rate=1, per=10, bucket=commands.Bucket.user)
+    async def fishrewards(self, ctx: commands.Context):
+        rewardsFilePath = self.get_fish_rewards_file_path(ctx)
+        reward = FishRewards(chatterRole="sub" if ctx.author.is_subscriber else "unsub", rewardsFilePath=rewardsFilePath)
+        messages = []
+        messages = Utils.generate_reward_strings(reward.get_probabilities())
+        message = ""
+        for msg in messages:
+            message += msg
+            message += " "
+        await ctx.send(message)
+
     @staticmethod
     def message_builder(fishReward: FishRewards, user: str):
         message = ["", ""]
