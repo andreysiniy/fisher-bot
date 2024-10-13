@@ -1,0 +1,64 @@
+{
+    "base_message": "{username} is fishing! !fish ... ",
+    "base_multiplier": 1.0,
+    "sub_multiplier": 1.3,
+    "cmds": {
+        "points": "!addpoints {username} {value}",
+        "timeout": "!timeout {username}",
+        "vip": "/vip $user"
+    },
+    "rewards": {
+        "nothing": [
+            {
+                "weight": 450,
+                "message": "NOTHING jonkler 0ALERT jonkler 0ALERT jonkler 0ALERT"
+            },
+            {
+                "weight": 450,
+                "message": "ABSOLUTELY ZERO THEVOICES 0LiveReaction Alarm"
+            },
+            {
+                "weight": 251,
+                "message": "ZERO jonkler 0LiveReaction"
+            },
+            {
+                "weight": 250,
+                "message": "000000000 ! 0NotAllowed"
+            }
+        ],
+        "points": [
+            {
+                "value": 10000,
+                "weight": 350,
+                "message": "GYAT COCKA +{value}K EZ"
+            },
+            {
+                "value": 25000,
+                "weight": 225,
+                "message": "boing +{value}K AMAZING!!! Goldge"
+            },
+            {
+                "value": 50000,
+                "weight": 170,
+                "message": "babah HUGE +{value}K babah"
+            },
+            {
+                "value": 70000,
+                "weight": 100,
+                "message": "babah 0ALERT !! HOLY SHIT +{value}K !! babah 0ALERT"
+            },
+            {
+                "value": 500000,
+                "weight": 40,
+                "message": "babah 0ALERT  BRILLIANT  HOLY FUCKING SHIT +{value}K NO WAY  BRILLIANT  babah 0ALERT WOW"
+            }
+        ],
+        "timeout": [
+            {
+                "seconds": 60,
+                "weight": 40,
+                "message": "djgruzovik {minutes} minute timeout watameBruhFaint gg"
+            }
+        ]
+    }
+  }

@@ -3,8 +3,8 @@ import json
 import random
 
 class FishRewards:
-    def __init__(self, chatterRole):
-        self.rewardsFile = 'fishRewards.json'
+    def __init__(self, chatterRole, rewardsFilePath):
+        self.rewardsFile = rewardsFilePath
         with open(self.rewardsFile, 'r') as file:
             self.rewardsJSON = json.load(file)
         self.chatterRole = chatterRole

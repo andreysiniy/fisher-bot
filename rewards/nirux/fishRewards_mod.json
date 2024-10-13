@@ -18,11 +18,11 @@
                 "message": "ABSOLUTELY ZERO THEVOICES 0LiveReaction Alarm"
             },
             {
-                "weight": 450,
+                "weight": 291,
                 "message": "ZERO jonkler 0LiveReaction"
             },
             {
-                "weight": 450,
+                "weight": 250,
                 "message": "000000000 ! 0NotAllowed"
             }
         ],
@@ -46,19 +46,11 @@
                 "value": 70000,
                 "weight": 100,
                 "message": "babah 0ALERT !! HOLY SHIT +{value}K !! babah 0ALERT"
-            }
-        ],
-        "timeout": [
+            },
             {
-                "seconds": 60,
+                "value": 500000,
                 "weight": 40,
-                "message": "djgruzovik {minutes} minute timeout watameBruhFaint gg"
-            }
-        ],
-		"vip": [
-            {
-                "weight": 2,
-                "message": "WOW OMG WOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOAHYEAHBABYTHATSWHATIVEBEENWAITINGFOR YOU JUST FISHED FREE VIP PETTHEVIPS  OMG 0ALERT WOW Nirux"
+                "message": "babah 0ALERT  BRILLIANT  HOLY FUCKING SHIT +{value}K NO WAY  BRILLIANT  babah 0ALERT WOW"
             }
         ]
     }

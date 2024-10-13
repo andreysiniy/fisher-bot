@@ -25,7 +25,8 @@ class TwitchBot(commands.Bot):
     @commands.command()
     @commands.cooldown(rate=1, per=600, bucket=commands.Bucket.user)
     async def fish(self, ctx: commands.Context):
-        reward = FishRewards(chatterRole="sub" if ctx.author.is_subscriber else "unsub")
+        rewardsFilePath = self.get_fish_rewards_file_path(ctx)
+        reward = FishRewards(chatterRole="sub" if ctx.author.is_subscriber else "unsub", rewardsFilePath=rewardsFilePath)
         print(reward)
         print(ctx.author.name)
         messages = self.message_builder(reward, ctx.author.name)
@@ -48,3 +49,14 @@ class TwitchBot(commands.Bot):
         message[0] += fishReward.chosenReward["message"].format(username = user, value = valueMsg, minutes = minutesMsg)
         print(message[0])
         return message
+    
+    @staticmethod
+    def get_fish_rewards_file_path(ctx):
+        rewardsFilePath = f"rewards/{ctx.channel.name}/fishRewards"
+        if ctx.author.is_vip:
+            rewardsFilePath += "_vip.json"
+        elif ctx.author.is_mod | ctx.author.is_broadcaster:
+            rewardsFilePath += "_mod.json"
+        else:
+            rewardsFilePath += ".json"
+        return rewardsFilePath
