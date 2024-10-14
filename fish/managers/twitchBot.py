@@ -23,7 +23,7 @@ class TwitchBot(commands.Bot):
          await ctx.send(f'Fishing is tiring man. Try again in {error.retry_after:.2f} seconds.')    
 
     @commands.command()
-    @commands.cooldown(rate=1, per=600, bucket=commands.Bucket.user)
+    @commands.cooldown(rate=1, per=600, bucket=commands.Bucket.member)
     async def fish(self, ctx: commands.Context):
         rewardsFilePath = self.get_fish_rewards_file_path(ctx)
         reward = FishRewards(chatterRole="sub" if ctx.author.is_subscriber else "unsub", rewardsFilePath=rewardsFilePath)
