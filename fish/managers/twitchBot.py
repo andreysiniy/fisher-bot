@@ -9,7 +9,7 @@ class TwitchBot(commands.Bot):
         args = {
             'token': self.config.token,
             'prefix': self.config.commandPrefix,
-            'initial_channels': [self.config.username], 
+            'initial_channels': self.config.username, 
         }
 
         super().__init__(**args)

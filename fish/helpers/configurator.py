@@ -1,7 +1,7 @@
 import os.path
 import configparser
 
-class Config:
+class Config():
     def __init__(self):
         self.configFile = 'cfg.ini'
         self.config = configparser.ConfigParser()
@@ -19,7 +19,8 @@ class Config:
             }
             self.save()
 
-        self.username = self.config.get('TWITCH', 'username')
+        self.username = self.config.get('TWITCH', 'username').split(',')
+        self.username = [name.strip() for name in self.username]
         self.commandPrefix = self.config.get('TWITCH', 'command-prefix')
         self.token = self.config.get('TWITCH', 'token')
         self.clientSecret = self.config.get('TWITCH', 'client-secret')
