@@ -2,6 +2,7 @@ from twitchio.ext import commands
 from twitchio import PartialUser, User
 from helpers.configurator import Config
 from helpers.fishRewardsConfig import FishRewards
+from datetime import datetime
 import helpers.utils as Utils
 
 class TwitchBot(commands.Bot):
@@ -28,8 +29,8 @@ class TwitchBot(commands.Bot):
     async def fish(self, ctx: commands.Context):
         rewardsFilePath = self.get_fish_rewards_file_path(ctx)
         reward = FishRewards(chatterRole="sub" if ctx.author.is_subscriber else "unsub", rewardsFilePath=rewardsFilePath)
-        print(reward)
-        print(ctx.author.name)
+        current_date = datetime.now().strftime("%d.%m.%Y %H:%M:%S")
+        print(f"{current_date} {ctx.author.name} fished!")
         messages = self.message_builder(reward, ctx.author.name)
         print(messages[1])
         if reward.chosenReward["type"] == "timeout":
