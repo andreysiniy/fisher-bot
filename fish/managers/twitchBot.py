@@ -1,4 +1,5 @@
 from twitchio.ext import commands
+from twitchio import PartialUser, User
 from helpers.configurator import Config
 from helpers.fishRewardsConfig import FishRewards
 import helpers.utils as Utils
@@ -31,6 +32,8 @@ class TwitchBot(commands.Bot):
         print(ctx.author.name)
         messages = self.message_builder(reward, ctx.author.name)
         print(messages[1])
+        if reward.chosenReward["type"] == "timeout":
+            await self.timeout_reward(ctx=ctx, rew_duration=reward.chosenReward["seconds"])
         await ctx.send(messages[0])
         await ctx.send(messages[1])
 
@@ -46,6 +49,11 @@ class TwitchBot(commands.Bot):
             message += msg
             message += " "
         await ctx.send(message)
+    
+    async def timeout_reward(self, ctx, rew_duration):
+        user = await ctx.channel.user()
+        await user.timeout_user(token=self.config.token, moderator_id=ctx.bot.user_id, user_id=ctx.author.id, duration=rew_duration, reason=f"Nice catch!! {rew_duration} seconds timeout!!")
+        
 
     @staticmethod
     def message_builder(fishReward: FishRewards, user: str):

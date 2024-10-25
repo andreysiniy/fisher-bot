@@ -4,8 +4,8 @@
     "sub_multiplier": 1.3,
     "cmds": {
         "points": "!addpoints {username} {value}",
-        "timeout": "!timeout {username}",
-        "vip": "/vip $user"
+        "timeout": "",
+        "vip": ""
     },
     "rewards": {
         "nothing": [
