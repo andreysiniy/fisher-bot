@@ -10,53 +10,53 @@
     "rewards": {
         "nothing": [
             {
-                "weight": 450,
+                "weight": 1350,
                 "message": "NOTHING jonkler 0ALERT jonkler 0ALERT jonkler 0ALERT"
             },
             {
-                "weight": 450,
+                "weight": 1350,
                 "message": "ABSOLUTELY ZERO THEVOICES 0LiveReaction Alarm"
             },
             {
-                "weight": 250,
+                "weight": 750,
                 "message": "ZERO jonkler 0LiveReaction"
             },
             {
-                "weight": 250,
+                "weight": 750,
                 "message": "000000000 ! 0NotAllowed"
             }
         ],
         "points": [
             {
                 "value": 10000,
-                "weight": 350,
+                "weight": 1050,
                 "message": "GYAT COCKA +{value}K EZ"
             },
             {
                 "value": 25000,
-                "weight": 225,
+                "weight": 675,
                 "message": "boing +{value}K AMAZING!!! Goldge"
             },
             {
                 "value": 50000,
-                "weight": 170,
+                "weight": 510,
                 "message": "babah HUGE +{value}K babah"
             },
             {
                 "value": 70000,
-                "weight": 100,
+                "weight": 300,
                 "message": "babah 0ALERT !! HOLY SHIT +{value}K !! babah 0ALERT"
             },
             {
                 "value": 500000,
-                "weight": 40,
+                "weight": 120,
                 "message": "babah 0ALERT  BRILLIANT  HOLY FUCKING SHIT +{value}K NO WAY  BRILLIANT  babah 0ALERT WOW"
             }
         ],
         "timeout": [
             {
                 "seconds": 60,
-                "weight": 40,
+                "weight": 120,
                 "message": "djgruzovik {minutes} minute timeout watameBruhFaint gg"
             }
         ],

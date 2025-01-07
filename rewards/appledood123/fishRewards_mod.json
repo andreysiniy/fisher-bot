@@ -18,11 +18,19 @@
                 "message": "ABSOLUTELY ZERO THEVOICES 0LiveReaction Alarm"
             },
             {
-                "weight": 251,
+                "weight": 166,
                 "message": "ZERO jonkler 0LiveReaction"
             },
             {
-                "weight": 286,
+                "weight": 125,
+                "message": "mitosis"               
+            },
+            {
+                "weight": 125,
+                "message": "uuhuu"                  
+            },
+            {
+                "weight": 125,
                 "message": "000000000 ! 0NotAllowed"
             }
         ],
@@ -51,13 +59,6 @@
                 "value": 500000,
                 "weight": 40,
                 "message": "babah 0ALERT  BRILLIANT  HOLY FUCKING SHIT +{value}K NO WAY  BRILLIANT  babah 0ALERT WOW"
-            }
-        ],
-        "timeout": [
-            {
-                "seconds": 60,
-                "weight": 4,
-                "message": "djgruzovik {minutes} minute timeout watameBruhFaint gg"
             }
         ]
     }

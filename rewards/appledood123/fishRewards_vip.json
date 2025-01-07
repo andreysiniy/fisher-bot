@@ -18,11 +18,19 @@
                 "message": "ABSOLUTELY ZERO THEVOICES 0LiveReaction Alarm"
             },
             {
-                "weight": 251,
+                "weight": 126,
                 "message": "ZERO jonkler 0LiveReaction"
             },
             {
-                "weight": 286,
+                "weight": 125,
+                "message": "mitosis"               
+            },
+            {
+                "weight": 125,
+                "message": "uuhuu"                  
+            },
+            {
+                "weight": 161,
                 "message": "000000000 ! 0NotAllowed"
             }
         ],
