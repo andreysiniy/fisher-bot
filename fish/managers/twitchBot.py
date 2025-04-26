@@ -49,7 +49,9 @@ class TwitchBot(commands.Bot):
         for msg in messages:
             message += msg
             message += " "
-        await ctx.send(message)
+        chunks = [message[i:i+255] for i in range(0, len(message), 255)]
+        for chunk in chunks:
+            await ctx.send(chunk)
     
     async def timeout_reward(self, ctx, rew_duration):
         user = await ctx.channel.user()
