@@ -1,0 +1,107 @@
+{
+    "base_message": "{username} is fishing! !fish ... ",
+    "base_multiplier": 1.0,
+    "sub_multiplier": 1.0,
+    "cmds": {
+        "points": "!addpoints {username} {value}",
+        "timeout": ""
+    },
+    "rewards": {
+        "nothing": [
+            {
+                "weight": 10,
+                "message": "not even a nibble.."
+            },
+            {
+                "weight": 10,
+                "message": "A FISH! SCHIZ"
+            },
+            {
+                "weight": 10,
+                "message": "my man had Casper on the line 💀"
+            },
+            {
+                "weight": 10,
+                "message": "📞∼ Your mother is call you! RETAAARD! 🗣️"
+            },
+            {
+                "weight": 10,
+                "message": "hot Catgirls 0ALERT in your area!"
+            },
+            {
+                "weight": 10,
+                "message": "🧊 0NotAllowed"
+            },
+            {
+                "weight": 10,
+                "message": "miniEnough"
+            },
+            {
+                "weight": 10,
+                "message": "fent"
+            },
+            {
+                "weight": 10,
+                "message": "NOTHING, ZERO EVEN!"
+            },
+            {
+                "weight": 10,
+                "message": "WOW major depression Pointless"
+            },
+            {
+                "weight": 10,
+                "message": "PepeNPC u get nothing!"
+            },
+            {
+                "weight": 10,
+                "message": "!? ... it fled"
+            },
+            {
+                "weight": 10,
+                "message": "KEEPGAMBLING"
+            },
+            {
+                "weight": 10,
+                "message": "0"
+            },
+            {
+                "weight": 10,
+                "message": "ㅤ"
+            }
+        ],
+        "points": [
+            {
+                "value": 300000,
+                "weight": 10,
+                "message": "Shigechi HARVEST +{value}K🧊 Sunowi"
+            },
+            {
+                "value": 100000,
+                "weight": 10,
+                "message": "forsenPirate YARRR +{value}K🧊"
+            },
+            {
+                "value": 1,
+                "weight": 10,
+                "message": "Joel +1🧊"
+            },
+            {
+                "value": 1,
+                "weight": 10,
+                "message": "AUGH +1🧊"
+            },
+            {
+                "value": 150000,
+                "weight": 10,
+                "message": "Goldge +{value}K🧊 sunowi"
+            }
+        ],
+        "timeout": [
+            {
+                "seconds": 60,
+                "weight": 10,
+                "message": "WAJAJA {minutes}m timeout MODS"
+            }
+        ]
+    }
+  }
