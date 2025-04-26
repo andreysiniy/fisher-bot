@@ -6,7 +6,7 @@ import copy
 class FishRewards:
     def __init__(self, chatterRole, rewardsFilePath):
         self.rewardsFile = rewardsFilePath
-        with open(self.rewardsFile, 'r') as file:
+        with open(self.rewardsFile, 'r', encoding='utf-8') as file:
             self.rewardsJSON = json.load(file)
         self.chatterRole = chatterRole
         self.baseRewards = self.rewardsJSON["rewards"]
