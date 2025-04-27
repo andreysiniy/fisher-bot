@@ -3,8 +3,6 @@
     "base_multiplier": 1.0,
     "sub_multiplier": 1.3,
     "cmds": {
-        "points": "!addpoints {username} {value}",
-        "timeout": "",
         "vip": ""
     },
     "rewards": {
@@ -30,27 +28,27 @@
             {
                 "value": 10000,
                 "weight": 350,
-                "message": "GYAT COCKA +{value}K EZ"
+                "message": "GYAT COCKA +{value} EZ"
             },
             {
                 "value": 25000,
                 "weight": 225,
-                "message": "boing +{value}K AMAZING!!! Goldge"
+                "message": "boing +{value} AMAZING!!! Goldge"
             },
             {
                 "value": 50000,
                 "weight": 170,
-                "message": "babah HUGE +{value}K babah"
+                "message": "babah HUGE +{value} babah"
             },
             {
                 "value": 70000,
                 "weight": 100,
-                "message": "babah 0ALERT !! HOLY SHIT +{value}K !! babah 0ALERT"
+                "message": "babah 0ALERT !! HOLY SHIT +{value} !! babah 0ALERT"
             },
             {
                 "value": 500000,
                 "weight": 40,
-                "message": "babah 0ALERT  BRILLIANT  HOLY FUCKING SHIT +{value}K NO WAY  BRILLIANT  babah 0ALERT WOW"
+                "message": "babah 0ALERT  BRILLIANT  HOLY FUCKING SHIT +{value} NO WAY  BRILLIANT  babah 0ALERT WOW"
             }
         ]
     }
