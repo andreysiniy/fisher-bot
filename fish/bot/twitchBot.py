@@ -1,16 +1,16 @@
 from twitchio.ext import commands
 from twitchio import PartialUser, User
-from helpers.configurator import Config
-from helpers.fishRewardsConfig import FishRewards
+from fish.helpers.configurator import Config
+from fish.helpers.fishRewardsConfig import FishRewards
 from datetime import datetime
-from managers.streamElementsManager import StreamElementsManager
-import managers.rewardManager as RewardHandler
-import helpers.utils as Utils
+from fish.managers.streamelementsmanager import StreamElementsManager
+import fish.managers.rewardManager as RewardHandler
+import fish.helpers.utils as Utils
 
 class TwitchBot(commands.Bot):
     def __init__(self):
         self.config = Config()
-        self.streamElements = StreamElementsManager()
+        self.streamElements = StreamElementsManager(config=self.config)
         args = {
             'token': self.config.token,
             'prefix': self.config.commandPrefix,

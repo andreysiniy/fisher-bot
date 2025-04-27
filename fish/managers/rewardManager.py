@@ -1,5 +1,5 @@
-from .streamElementsManager import StreamElementsManager
-import helpers.utils as Utils
+
+import fish.helpers.utils as Utils
 
 class BaseRewardHandler:
     def __init__(self, reward, ctx, token, streamelements):

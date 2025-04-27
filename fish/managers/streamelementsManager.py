@@ -1,9 +1,9 @@
-from helpers.configurator import Config
+
 from aiohttp import ClientSession
 
 class StreamElementsManager:
-    def __init__(self):
-        self.config = Config()
+    def __init__(self, config):
+        self.config = config
         self.jwt = self.config.streamelementsJWT
         print(f"StreamElements Initialized")    
 

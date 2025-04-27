@@ -1,9 +1,13 @@
 import sys
 import traceback
 
-from bot.twitchBot import TwitchBot
+from fish.bot.twitchBot import TwitchBot
+
+import os
+
 
 if __name__ == '__main__':
+
     try:
         bot = TwitchBot()
         bot.run()
