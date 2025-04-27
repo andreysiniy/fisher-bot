@@ -14,7 +14,8 @@ class Config():
                 'command-prefix': '!',
                 'token': '',
                 'client-secret': '',
-                'enable-cooldown-msg': False
+                'enable-cooldown-msg': False,
+                'streamelements-jwt' : ''
                 #to be continiued
             }
             self.save()
@@ -25,6 +26,7 @@ class Config():
         self.token = self.config.get('TWITCH', 'token')
         self.clientSecret = self.config.get('TWITCH', 'client-secret')
         self.enableCooldownMsg = self.config.getboolean('TWITCH', 'enable-cooldown-msg')
+        self.streamelementsJWT = self.config.get('TWITCH', 'streamelements-jwt')
 
     def save(self):
         with open(self.configFile, 'w') as configfile:
