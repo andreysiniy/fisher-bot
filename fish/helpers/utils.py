@@ -51,6 +51,11 @@ def format_time(seconds):
 
     return ' '.join(parts)
 
+def format_percent(value):
+    percent = value * 100
+    formatted = f"{percent:.2f}".rstrip('0').rstrip('.')
+    return f"{formatted}%"
+
 
 def generate_reward_strings(reward_probabilities):
     reward_strings = []

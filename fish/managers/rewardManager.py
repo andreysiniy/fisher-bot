@@ -45,6 +45,21 @@ class VipRewardHandler(BaseRewardHandler):
         message += self.reward.chosenReward["message"].format(username = self.ctx.author.name)
         await self.ctx.send(message)
 
+class PercentagePointsRewardHandler(BaseRewardHandler):
+    async def handle(self):
+        message = ["", ""]
+        message[0] = self.reward.rewardsJSON["base_message"].format(username = self.ctx.author.name)
+        percentageMsg = Utils.format_percent(self.reward.chosenReward["percentage"])
+        message[0] += self.reward.chosenReward["message"].format(username = self.ctx.author.name, percentage = percentageMsg)
+        channel_id = await self.streamelements.get_channel_id(self.ctx.channel.name) 
+        userpoints = await self.streamelements.get_user_points(user=self.ctx.author.name, channel_id=channel_id)
+        points_to_add = int(userpoints * self.reward.chosenReward["percentage"])
+        await self.streamelements.add_user_points(user=self.ctx.author.name, channel_id=channel_id, points=points_to_add)
+        await self.ctx.send(message[0])
+        
+        message[1] = f"Set {self.ctx.author.name} points to: {Utils.format_large_number(userpoints)}"
+        await self.ctx.send(message[1])
+
 class CustomRewardHandler(BaseRewardHandler):
     async def handle(self):
         message = ["", ""]
@@ -66,6 +81,7 @@ reward_handler_mapping = {
     "points": PointsRewardHandler,
     "timeout": TimeoutRewardHandler,
     "vip": VipRewardHandler,
+    "percentage_points": PercentagePointsRewardHandler,
     "nothing": NothingRewardHandler
 }
 
