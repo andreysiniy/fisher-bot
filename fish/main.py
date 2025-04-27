@@ -1,7 +1,7 @@
 import sys
 import traceback
 
-from managers.twitchBot import TwitchBot
+from bot.twitchBot import TwitchBot
 
 if __name__ == '__main__':
     try:
