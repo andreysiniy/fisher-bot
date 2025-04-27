@@ -51,7 +51,7 @@ class StreamElementsManager:
             async with session.get(url, headers=headers) as response:
                 if response.status == 200:
                     data = await response.json()
-                    print(f"User: {user} has {data.get("points")} points on channel_id: {channel_id}")
+                    print(f"User: {user} has {data.get('points')} points on channel_id: {channel_id}")
                     return data.get("points")
                 else:
                     response.raise_for_status()
