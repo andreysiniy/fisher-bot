@@ -3,7 +3,10 @@
     "base_multiplier": 1.0,
     "sub_multiplier": 1.0,
     "cmds": {
-        "timeout": ""
+        "points": "!addpoints {username} {value}",
+        "timeout": "",
+        "vip": ""
+
     },
     "rewards": {
         "nothing": [
