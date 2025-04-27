@@ -29,6 +29,8 @@ class StreamElementsManager:
                     print(f"Channel ID for {name}: {data.get('_id')}")
                     return data.get("_id")
                 else:
+                    print(f"Failed to get channel ID for {name}: {response.status}")
+                    print(f"Response: {await response.text()}")
                     response.raise_for_status()
 
     async def get_user_points(self, user: str, channel_id: str):
@@ -54,6 +56,8 @@ class StreamElementsManager:
                     print(f"User: {user} has {data.get('points')} points on channel_id: {channel_id}")
                     return data.get("points")
                 else:
+                    print(f"Failed to get points for user {user} on channel_id: {channel_id}: {response.status}")
+                    print(f"Response: {await response.text()}")
                     response.raise_for_status()
 
 
@@ -77,6 +81,8 @@ class StreamElementsManager:
                     print(f"Added {points} points to user {user} on channel_id: {channel_id}")
                     return await response.json()
                 else:
+                    print(f"Failed to add points to user {user} on channel_id: {channel_id}: {response.status}")
+                    print(f"Response: {await response.text()}")
                     response.raise_for_status()
 
     async def remove_user_points(self, user: str, channel_id: str, points: int):
@@ -99,4 +105,6 @@ class StreamElementsManager:
                     print(f"Removed {points} points from user {user} on channel_id: {channel_id}")
                     return await response.json()
                 else:
+                    print(f"Failed to remove points from user {user} on channel_id: {channel_id}: {response.status}")
+                    print(f"Response: {await response.text()}")
                     response.raise_for_status()
