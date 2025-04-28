@@ -5,7 +5,8 @@
     "cmds": {
         "points": "!addpoints {username} {value}",
         "timeout": "",
-        "vip": ""
+        "vip": "",
+        "percentage_points": ""
     },
     "rewards": {
         "nothing": [
@@ -51,6 +52,18 @@
                 "value": 500000,
                 "weight": 40,
                 "message": "babah 0ALERT  BRILLIANT  HOLY FUCKING SHIT +{value} NO WAY  BRILLIANT  babah 0ALERT WOW"
+            }
+        ],
+        "percentage_points": [
+            {
+                "percentage": -0.2,
+                "weight": 20,
+                "message": "get taxed lmao {percentage}  ☠️ 💀"
+            },
+            {
+                "percentage": 0.3,
+                "weight": 60,
+                "message": "THE STOCKS ARE RISING +{percentage} WOW"
             }
         ]
     }

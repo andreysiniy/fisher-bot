@@ -5,7 +5,8 @@
     "cmds": {
         "points": "!addpoints {username} {value}",
         "timeout": "",
-        "vip": "" 
+        "vip": "",
+        "percentage_points": "" 
     },
     "rewards": {
         "nothing": [
@@ -64,6 +65,18 @@
             {
                 "weight": 1,
                 "message": "WOW OMG WOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOAHYEAHBABYTHATSWHATIVEBEENWAITINGFOR YOU JUST FISHED FREE VIP PETTHEVIPS  OMG 0ALERT WOW Nirux"
+            }
+        ],
+        "percentage_points": [
+            {
+                "percentage": -0.2,
+                "weight": 20,
+                "message": "get taxed lmao {percentage}  ☠️ 💀"
+            },
+            {
+                "percentage": 0.3,
+                "weight": 60,
+                "message": "THE STOCKS ARE RISING +{percentage} WOW"
             }
         ]
     }
