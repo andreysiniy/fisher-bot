@@ -80,14 +80,20 @@ def format_percent(value):
 def generate_reward_strings(reward_probabilities):
     reward_strings = []
 
+    reward_formatters = {
+        "points": lambda item: f"Points: {format_large_number_sign(item['value'])} - {format_percent(item['probability'])}",
+        "timeout": lambda item: f"Timeout: {format_time(item['seconds'])} - {format_percent(item['probability'])}",
+        "vip": lambda item: f"VIP - {format_percent(item['probability'])}",
+        "russian_roulette": lambda item: f"RR: {item['penalty_type']} - {format_percent(item['probability'])}",
+        "percentage_points": lambda item: f"Percentage Points: {format_percent(item['percentage'])} - {format_percent(item['probability'])}",
+    }
+
+    reward_strings = []
+
     for category_name, items in reward_probabilities.items():
         for item in items:
-            if category_name == "points":
-                reward_string = f"Points: {format_number(item['value']//1000)}K - {item['probability']*100:.2f}%"
-            elif category_name == "timeout":
-                reward_string = f"Timeout: {item['seconds']} seconds - {item['probability']*100:.2f}%"
-            elif category_name == "vip":
-                reward_string = f"VIP - {item['probability']*100:.2f}%"
+            formatter = reward_formatters.get(category_name, lambda item: f"Custom Reward: {format_percent(item['probability'])}")
+            reward_string = formatter(item)
             reward_strings.append(reward_string)
-    
+
     return reward_strings

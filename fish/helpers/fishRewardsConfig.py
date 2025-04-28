@@ -40,9 +40,13 @@ class FishRewards:
             
                 if "value" in item:
                     item_data["value"] = item["value"] * self.multiplier
-                elif "seconds" in item:
+                if "seconds" in item:
                     item_data["seconds"] = item["seconds"]
-
+                if "percentage" in item:
+                    item_data["percentage"] = item["percentage"]
+                if "penalty_type" in item:
+                    item_data["penalty_type"] = item["penalty_type"]
+                
                 reward_probabilities[category_name].append(item_data)
         return reward_probabilities
        
