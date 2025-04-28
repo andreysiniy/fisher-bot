@@ -111,7 +111,6 @@ class RussianRouletteRewardHandler(BaseRewardHandler):
         message[0] += self.reward.chosenReward["message"].format(username = self.ctx.author.name, chambers = chambers, bullets = bullets)
         await self.ctx.send(message[0])
         if self.was_shot(bullets, chambers):
-            print(self.reward.chosenReward.get('penalty_type'))
             await shot_penalty_mapping[self.reward.chosenReward.get("penalty_type")]()
         else:
             message[1] = self.reward.chosenReward["safe_message"].format(username = self.ctx.author.name)
