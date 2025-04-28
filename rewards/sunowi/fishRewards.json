@@ -120,14 +120,14 @@
                 "message": "forsenPirate YARRRR +{value}🧊"
             },
             {
-                "value": 1,
+                "value": 1000,
                 "weight": 10000,
-                "message": "Joel +{value}🧊"
+                "message": "Joel common fish! +{value}🧊"
             },
             {
-                "value": 1,
+                "value": 1500,
                 "weight": 10000,
-                "message": "AUGH +{value}🧊"
+                "message": "AUGH common fish! +{value}🧊"
             },
             {
                 "value": 150000,
