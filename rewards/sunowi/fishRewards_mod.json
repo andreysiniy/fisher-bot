@@ -5,187 +5,228 @@
     "cmds": {
         "points": "!addpoints {username} {value}",
         "timeout": "",
-        "vip": ""
+        "vip": "",
+        "percentage_points": "",
+        "russian_roulette": ""
     },
     "rewards": {
         "nothing": [
             {
-                "weight": 500,
+                "weight": 2260,
                 "message": "not even a nibble.."
             },
             {
-                "weight": 500,
+                "weight": 2260,
                 "message": "A FISH! SCHIZ"
             },
             {
-                "weight": 500,
+                "weight": 2260,
                 "message": "my man had Casper on the line 💀"
             },
             {
-                "weight": 500,
+                "weight": 2260,
                 "message": "📞∼ Your mother is call you! RETAAARD! 🗣️"
             },
             {
-                "weight": 500,
+                "weight": 2260,
                 "message": "hot Catgirls 0ALERT in your area!"
             },
             {
-                "weight": 500,
+                "weight": 2260,
                 "message": "🧊 0NotAllowed"
             },
             {
-                "weight": 500,
+                "weight": 2260,
                 "message": "miko zero bitches aye?"
             },
             {
-                "weight": 500,
+                "weight": 2260,
                 "message": "legendary fent pull!"
             },
             {
-                "weight": 500,
+                "weight": 2260,
                 "message": "NOTHING, ZERO EVEN!"
             },
             {
-                "weight": 500,
+                "weight": 2260,
                 "message": "WOW major depression Pointless"
             },
             {
-                "weight": 500,
+                "weight": 2260,
                 "message": "PepeNPC you get nothing!"
             },
             {
-                "weight": 500,
+                "weight": 2260,
                 "message": "!? ... it fled"
             },
             {
-                "weight": 500,
+                "weight": 2260,
                 "message": "KEEPGAMBLING"
             },
             {
-                "weight": 500,
-                "message": "..."
+                "weight": 2260,
+                "message": "no luck"
             },
             {
-                "weight": 500,
+                "weight": 2260,
                 "message": "ㅤ"
             },
             {
-                "weight": 500,
+                "weight": 2260,
                 "message": "YOU GET CANZZERER 🍆"
             },
             {
-                "weight": 500,
+                "weight": 2260,
                 "message": "RARE a1dzzzzzzz pull NOWAYING"
             },
             {
-                "weight": 500,
+                "weight": 2260,
                 "message": "you found an expired ph premium subscription 💦💦💦"
             },
             {
-                "weight": 500,
+                "weight": 2260,
                 "message": "ahahahah enough just fucking give up"
             },
             {
-                "weight": 500,
-                "message": "ems got you some reels ... -sanity"
+                "weight": 2260,
+                "message": "ems got you some reels -sanity I guess"
             },
             {
-                "weight": 500,
-                "message": "... whats up fuckers i suggest you lock in! wingo"
+                "weight": 2260,
+                "message": "whats up fuckers i suggest you lock in! wingo"
             },
             {
-                "weight": 100,
+                "weight": 2260,
                 "message": "HOLY BOOBA YOU FISHED UP AN ANIME girl!? FREE VTUBER TIME pogs -> sunowi"
             },
             {
-                "weight": 500,
+                "weight": 2260,
                 "message": "you fished a fishing rod fishing a fishing rod fishing absolutely fucking nothing."
             },
             {
-                "weight": 100,
+                "weight": 3000,
                 "message": "jigsaw 🃏 FOR YOUR FINAL CHALLENGE @{username}: TWO CHOICES, GAMBLE ALL OR LOSE IT ALL🃏 jigsaw"
             }
-
-
         ],
         "points": [
             {
                 "value": 300000,
-                "weight": 500,
+                "weight": 2500,
                 "message": "Shigechi HAAAAAAAARVESTO +{value}🧊"
             },
             {
                 "value": 100000,
-                "weight": 500,
+                "weight": 2333,
                 "message": "forsenPirate YARRRR +{value}🧊"
             },
             {
                 "value": 1,
-                "weight": 500,
+                "weight": 3500,
                 "message": "Joel +{value}🧊"
             },
             {
                 "value": 1,
-                "weight": 500,
+                "weight": 3500,
                 "message": "AUGH +{value}🧊"
             },
             {
                 "value": 150000,
-                "weight": 500,
+                "weight": 2333,
                 "message": "!? rare golden pepe Goldge +{value}🧊 sunowi"
             },
             {
                 "value": 50000,
-                "weight": 500,
-                "message": "you fished up kubeks remains 🥀🥀🥀 +{value}🧊 "
+                "weight": 1750,
+                "message": "you fished up kubeks remains 🥀🥀🥀 they actually sell for a nice penny! +{value}🧊 "
             },
             {
                 "value": -100000,
-                "weight": 200,
-                "message": "the IRS found your illegal money laundering business! {value}🧊"
+                "weight": 1000,
+                "message": "while fishing the IRS unfortunately found your  illegal money laundering business! fucking unlucky... {value}🧊"
             },
             {
                 "value": -10000,
-                "weight": 400,
-                "message": "they found your name on epsteins list gng. {value}🧊 fine RIPBOZO"
+                "weight": 2000,
+                "message": "oop they found your name on epsteins list gang, thats a {value}🧊 fine RIPBOZO"
             },
             {
                 "value": -20,
-                "weight": 500,
+                "weight": 1425,
                 "message": "🍔 for miko BORGIR {value}🧊"
             },
             {
                 "value": -50,
-                "weight": 500,
-                "message": "your line snapped ... {value}🧊"
+                "weight": 1425,
+                "message": "your line unfortunately snapped ... {value}🧊"
             },
             {
                 "value": 500000,
-                "weight": 100,
-                "message": "jackpot! cheshire's secret goon stash!? JACKPOT +{value}🧊"
+                "weight": 2750,
+                "message": "jackpot! cheshire's secret goon stash! thats a BIGWIN !!! +{value}🧊"
             },
             {
                 "value": -30000,
-                "weight": 500,
-                "message": "fuck fishing... you decide to go home and hop on some cs trading and as a result you get scammed of all your skins gg {value}🧊"
+                "weight": 1000,
+                "message": "fuck fishing... you decide to go home and hop on cs trading, and as a result you get scammed of all your skins gg {value}🧊"
             },
             {
                 "value": 200000,
-                "weight": 300,
-                "message": "you fished up an ancient voice recorder containing tsuki's voice Oldge +{value}🧊"
+                "weight": 2334,
+                "message": "you fished up an ancient voice recorder containing tsuki's voice Oldge it actually sells for a nice price +{value}🧊"
             },
             {
                 "value": 67218,
-                "weight": 500,
+                "weight": 1750,
                 "message": "You fished up a bitcoin! +{value}🧊"
             },
             {
-                "value": -5000,
-                "weight": 500,
-                "message": "You fished up blitzels Oshawott and it robs your ass 😭 {value}🧊"
+                "value": -10000,
+                "weight": 3400,
+                "message": "oh thats blitzels oshawott on the line, quick release it before it...?! {value}🧊 ... ah, fucking unlucky"
+            }
+        ],
+        "percentage_points": [
+            {
+                "percentage": -0.2,
+                "weight": 200,
+                "message": "get taxed lmao {percentage}  ☠️ 💀"
+            },
+            {
+                "percentage": 0.3,
+                "weight": 600,
+                "message": "THE STOCKS ARE RISING +{percentage} WOW"
+            }
+        ],
+        "russian_roulette": [
+            {
+                "weight": 1600,
+                "chambers": 6,
+                "bullets": 1,
+                "penalty_type": "percentage",
+                "percentage": 0.3,
+                "shot_message": "💥 -{percentage} points ☠",
+                "safe_message": "*Click* ... safe! live to fish another day",
+                "message": "you fished up a loaded revolver, your sanity can't take this anymore! alright {bullets} bullet in {chambers} chambers here goes nothing! Enough"
+            },
+            {
+                "weight": 800,
+                "chambers": 6,
+                "bullets": 2,
+                "penalty_type": "points",
+                "value": 40000,
+                "shot_message": "💥 -{value} points, yeowch!",
+                "safe_message": "*Click* ... safe! live to fish another day",
+                "message": "you fished up a loaded revolver, your sanity can't take this anymore! alright {bullets} bullet in {chambers} chambers here goes nothing! Enough"
+            },
+            {
+                "weight": 800,
+                "chambers": 6,
+                "bullets": 2,
+                "penalty_type": "nothing",
+                "shot_message": "💥 {username} should have got shot but... the bullets are fake?!",
+                "safe_message": "*Click* ... safe! live to fish another day",
+                "message": "you fished up a loaded revolver, your sanity can't take this anymore! alright {bullets} bullet in {chambers} chambers here goes nothing! Enough"
             }
         ]
-
-        }
     }
-  
+}
