@@ -1,6 +1,7 @@
 
 import fish.helpers.utils as Utils
 import random
+import asyncio
 
 class BaseRewardHandler:
     def __init__(self, reward, ctx, token, streamelements):
@@ -110,6 +111,7 @@ class RussianRouletteRewardHandler(BaseRewardHandler):
         message[0] = self.reward.rewardsJSON["base_message"].format(username = self.ctx.author.name)
         message[0] += self.reward.chosenReward["message"].format(username = self.ctx.author.name, chambers = chambers, bullets = bullets)
         await self.ctx.send(message[0])
+        await asyncio.sleep(2)
         if self.was_shot(bullets, chambers):
             await shot_penalty_mapping[self.reward.chosenReward.get("penalty_type")]()
         else:
