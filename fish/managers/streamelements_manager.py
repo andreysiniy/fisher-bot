@@ -100,7 +100,7 @@ class StreamElementsManager:
                 "Accept": "application/json; charset=utf-8",
                 "Authorization": f"Bearer {self.jwt}"
             }
-            async with session.delete(url, headers=headers) as response:
+            async with session.put(url, headers=headers) as response:
                 if response.status == 200:
                     print(f"Removed {points} points from user {user} on channel_id: {channel_id}")
                     return await response.json()
