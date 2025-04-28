@@ -8,24 +8,24 @@ def format_number(value):
         return str(float(formatted_value))
     
 def format_large_number(value):
-    abs_value = abs(value)  
+    abs_value = abs(value)
     if abs_value >= 1_000_000_000_000_000:
-        formatted = value / 1_000_000_000_000_000
-        return f"{formatted:.2f}".rstrip('0').rstrip('.') + "Q"
+        value = value / 1_000_000_000_000_000
+        return f"{value:+.2f}".rstrip('0').rstrip('.') + "Q"
     elif abs_value >= 1_000_000_000_000:
-        formatted = value / 1_000_000_000_000
-        return f"{formatted:.2f}".rstrip('0').rstrip('.') + "T"
+        value = value / 1_000_000_000_000
+        return f"{value:+.2f}".rstrip('0').rstrip('.') + "T"
     elif abs_value >= 1_000_000_000:
-        formatted = value / 1_000_000_000
-        return f"{formatted:.2f}".rstrip('0').rstrip('.') + "B"
+        value = value / 1_000_000_000
+        return f"{value:+.2f}".rstrip('0').rstrip('.') + "B"
     elif abs_value >= 1_000_000:
-        formatted = value / 1_000_000
-        return f"{formatted:.2f}".rstrip('0').rstrip('.') + "M"
+        value = value / 1_000_000
+        return f"{value:+.2f}".rstrip('0').rstrip('.') + "M"
     elif abs_value >= 1_000:
-        formatted = value / 1_000
-        return f"{formatted:.2f}".rstrip('0').rstrip('.') + "K"
+        value = value / 1_000
+        return f"{value:+.2f}".rstrip('0').rstrip('.') + "K"
     else:
-        return str(value)
+        return f"{value:+.2f}".rstrip('0').rstrip('.')  
 
 def format_time(seconds):
     seconds = int(seconds)
