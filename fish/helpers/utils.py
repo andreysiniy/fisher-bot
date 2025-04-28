@@ -11,6 +11,26 @@ def format_large_number(value):
     abs_value = abs(value)
     if abs_value >= 1_000_000_000_000_000:
         value = value / 1_000_000_000_000_000
+        return f"{value:.2f}".rstrip('0').rstrip('.') + "Q"
+    elif abs_value >= 1_000_000_000_000:
+        value = value / 1_000_000_000_000
+        return f"{value:.2f}".rstrip('0').rstrip('.') + "T"
+    elif abs_value >= 1_000_000_000:
+        value = value / 1_000_000_000
+        return f"{value:.2f}".rstrip('0').rstrip('.') + "B"
+    elif abs_value >= 1_000_000:
+        value = value / 1_000_000
+        return f"{value:.2f}".rstrip('0').rstrip('.') + "M"
+    elif abs_value >= 1_000:
+        value = value / 1_000
+        return f"{value:.2f}".rstrip('0').rstrip('.') + "K"
+    else:
+        return f"{value:.2f}".rstrip('0').rstrip('.')  
+    
+def format_large_number_sign(value):
+    abs_value = abs(value)
+    if abs_value >= 1_000_000_000_000_000:
+        value = value / 1_000_000_000_000_000
         return f"{value:+.2f}".rstrip('0').rstrip('.') + "Q"
     elif abs_value >= 1_000_000_000_000:
         value = value / 1_000_000_000_000

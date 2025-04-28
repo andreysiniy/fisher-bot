@@ -23,7 +23,7 @@ class PointsRewardHandler(BaseRewardHandler):
         channel_id = await self.streamelements.get_channel_id(self.ctx.channel.name) 
         response = await self.streamelements.add_user_points(user=self.ctx.author.name, channel_id=channel_id, points=self.reward.chosenReward["value"])
         await self.ctx.send(message[0])
-        message[1] = f"Set {self.ctx.author.name} points to: {Utils.format_large_number(response['newAmount'])}"
+        message[1] = f"Set {self.ctx.author.name} points to: {Utils.format_large_number(response['newAmount'])} ({Utils.format_large_number_sign(response['amount'])})"
         await self.ctx.send(message[1])
 
 class TimeoutRewardHandler(BaseRewardHandler):
@@ -57,7 +57,7 @@ class PercentagePointsRewardHandler(BaseRewardHandler):
         response = await self.streamelements.add_user_points(user=self.ctx.author.name, channel_id=channel_id, points=points_to_add)
         await self.ctx.send(message[0])
         
-        message[1] = f"Set {self.ctx.author.name} points to: {Utils.format_large_number(response['newAmount'])}"
+        message[1] = f"Set {self.ctx.author.name} points to: {Utils.format_large_number(response['newAmount'])} ({Utils.format_large_number_sign(response['amount'])})"
         await self.ctx.send(message[1])
 
 class RussianRouletteRewardHandler(BaseRewardHandler):
@@ -81,7 +81,7 @@ class RussianRouletteRewardHandler(BaseRewardHandler):
         shot_points = int(userpoints * self.reward.chosenReward["percentage"])
         response = await self.streamelements.remove_user_points(user=self.ctx.author.name, channel_id=channel_id, points=shot_points)
         await self.ctx.send(message)
-        await self.ctx.send(f"Set {self.ctx.author.name} points to: {Utils.format_large_number(response['newAmount'])}")
+        await self.ctx.send(f"Set {self.ctx.author.name} points to: {Utils.format_large_number(response['newAmount'])} ({Utils.format_large_number_sign(response['amount'])})")
 
     
     async def handle_points(self):
@@ -90,7 +90,7 @@ class RussianRouletteRewardHandler(BaseRewardHandler):
         channel_id = await self.streamelements.get_channel_id(self.ctx.channel.name)
         response = await self.streamelements.remove_user_points(user=self.ctx.author.name, channel_id=channel_id, points=self.reward.chosenReward["value"])
         await self.ctx.send(message)
-        await self.ctx.send(f"Set {self.ctx.author.name} points to: {Utils.format_large_number(response['newAmount'])}")
+        await self.ctx.send(f"Set {self.ctx.author.name} points to: {Utils.format_large_number(response['newAmount'])} ({Utils.format_large_number_sign(response['amount'])})")
 
     async def handle_nothing(self):
         message = self.reward.chosenReward["shot_message"].format(username = self.ctx.author.name)
