@@ -108,3 +108,62 @@ class StreamElementsManager:
                     print(f"Failed to remove points from user {user} on channel_id: {channel_id}: {response.status}")
                     print(f"Response: {await response.text()}")
                     response.raise_for_status()
+    
+    async def get_user_rank(self, user: str, channel_id: str):
+        """
+        Retrieve the rank of a user in a specific channel.
+        
+        Args:
+            user (str): The username of the user.
+            channel_id (str): The ID of the channel.
+        
+        Returns:
+            str: The rank of the user.
+        """
+        async with ClientSession() as session:
+            url = f"https://api.streamelements.com/kappa/v2/points/{channel_id}/{user}/rank"
+            headers = {
+                "Accept": "application/json; charset=utf-8",
+                "Authorization": f"Bearer {self.jwt}"
+            }
+            async with session.get(url, headers=headers) as response:
+                if response.status == 200:
+                    data = await response.json()
+                    print(f"User: {user} has rank: {data.get('rank')} on channel_id: {channel_id}")
+                    return data.get("rank")
+                else:
+                    print(f"Failed to get rank for user {user} on channel_id: {channel_id}: {response.status}")
+                    print(f"Response: {await response.text()}")
+                    response.raise_for_status()
+    
+    async def get_username_by_rank(self, rank: int, channel_id: str):
+        """
+        Retrieve the user with a specific rank in a specific channel.
+        
+        Args:
+            rank (int): The rank of the user.
+            channel_id (str): The ID of the channel.
+        
+        Returns:
+            str: The username of the user.
+        """
+        async with ClientSession() as session:
+            url = f"https://api.streamelements.com/kappa/v2/points/{channel_id}/top?limit=1&offset={rank - 1}"
+            headers = {
+                "Accept": "application/json; charset=utf-8",
+                "Authorization": f"Bearer {self.jwt}"
+            }
+            async with session.get(url, headers=headers) as response:
+                if response.status == 200:
+                    data = await response.json()
+                    if "users" in data and len(data["users"]) > 0:
+                        username = data["users"][0].get("username")
+                        print(f"User with rank {rank} on channel_id: {channel_id} is {username}")
+                        return username
+                    else:
+                        print(f"No user found for rank {rank} on channel_id: {channel_id}")
+                        return ""
+                else:
+                    print(f"Failed to get user by rank {rank} on channel_id: {channel_id}: {response.status}")
+                    print(f"Response: {await response.text()}")
+                    response.raise_for_status()
