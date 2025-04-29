@@ -118,6 +118,74 @@ class RussianRouletteRewardHandler(BaseRewardHandler):
             message[1] = self.reward.chosenReward["safe_message"].format(username = self.ctx.author.name)
             await self.ctx.send(message[1])
 
+class RobberyRewardHandler(BaseRewardHandler):
+    def get_robbed_user_rank(self, rank: int, rank_range: int) -> int:
+        possible_ranks = [r for r in range(rank - rank_range, rank) if r != rank and r > 0]
+        if not possible_ranks:
+            return 2  
+        return random.choice(possible_ranks)
+
+    async def swap_points(self, channel_id: str, user1: str, user2: str, points: int):
+        """
+        Swap points between two users.
+        Args:
+            channel_id (str): The ID of the channel.
+            user1 (str): The username of the first user losing the points.
+            user2 (str): The username of the second user gaining the points.
+            points (int): The number of points to swap.
+        """
+        user1_points = await self.streamelements.get_user_points(user=user1, channel_id=channel_id)
+        points_to_rob = min(points, user1_points)
+        response_user1 = await self.streamelements.remove_user_points(user=user1, channel_id=channel_id, points=points_to_rob)
+        response_user2 = await self.streamelements.add_user_points(user=user2, channel_id=channel_id, points=points_to_rob)
+        await self.ctx.send(
+            f"{user2} ({Utils.format_large_number(response_user2['newAmount'])} "
+            f"({Utils.format_large_number_sign(response_user2['amount'])})) robbed "
+            f"{user1} ({Utils.format_large_number(response_user1['newAmount'])} "
+            f"({Utils.format_large_number_sign(response_user1['amount'])}))!"
+            )
+
+
+    async def handle_points_robbery(self, channel_id: str, robbed_user: str):
+        value = self.reward.chosenReward["value"]
+        message = self.reward.chosenReward["robbery_message"].format(username = self.ctx.author.name, value = Utils.format_large_number(value), victim = robbed_user)
+        await self.ctx.send(message)
+        await self.swap_points(channel_id=channel_id, user1=robbed_user, user2=self.ctx.author.name, points=value)
+        
+
+    async def handle_percentage_robbery(self, channel_id: str, robbed_user: str):
+        percentage = self.reward.chosenReward["percentage"]
+        message = self.reward.chosenReward["robbery_message"].format(username = self.ctx.author.name, percentage = Utils.format_percent(percentage), victim = robbed_user)
+        await self.ctx.send(message)
+        robbed_user_points = await self.streamelements.get_user_points(user=robbed_user, channel_id=channel_id)
+        points_to_rob = int(robbed_user_points * percentage)
+        await self.swap_points(channel_id=channel_id, user1=robbed_user, user2=self.ctx.author.name, points=points_to_rob)
+
+
+    async def handle(self):
+        message = ["", ""]
+        message[0] = self.reward.rewardsJSON["base_message"].format(username = self.ctx.author.name)
+        message[0] += self.reward.chosenReward["message"].format(username = self.ctx.author.name)
+        
+        await self.ctx.send(message[0])
+       
+        channel_id = await self.streamelements.get_channel_id(self.ctx.channel.name)
+        rank = await self.streamelements.get_user_rank(user=self.ctx.author.name, channel_id=channel_id)
+        rank_range = self.reward.chosenReward["range"]
+        robbed_user_rank = self.get_robbed_user_rank(rank=rank, rank_range=rank_range)
+        robbed_user = await self.streamelements.get_username_by_rank(rank=robbed_user_rank, channel_id=channel_id)
+
+        robbery_type_mapping = {
+            "percentage": lambda: self.handle_percentage_robbery(channel_id=channel_id, robbed_user=robbed_user),
+            "value": lambda: self.handle_points_robbery(channel_id=channel_id, robbed_user=robbed_user)
+        }
+
+        for key, handler in robbery_type_mapping.items():
+            if key in self.reward.chosenReward:
+                await handler()
+        
+
+
 class CustomRewardHandler(BaseRewardHandler):
     async def handle(self):
         message = ["", ""]
@@ -141,6 +209,7 @@ reward_handler_mapping = {
     "vip": VipRewardHandler,
     "percentage_points": PercentagePointsRewardHandler,
     "russian_roulette": RussianRouletteRewardHandler,
+    "robbery": RobberyRewardHandler,
     "nothing": NothingRewardHandler
 }
 
