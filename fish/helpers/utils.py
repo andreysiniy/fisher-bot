@@ -86,6 +86,18 @@ def generate_reward_strings(reward_probabilities):
         "vip": lambda item: f"VIP - {format_percent(item['probability'])}",
         "russian_roulette": lambda item: f"RR: {item['penalty_type']} - {format_percent(item['probability'])}",
         "percentage_points": lambda item: f"Percentage Points: {format_percent(item['percentage'])} - {format_percent(item['probability'])}",
+        "robbery": lambda item: (
+    f"Robbery: "
+    + (
+        f"{format_large_number(item['value'])}"
+        if "value" in item
+        else f"{format_percent(item['percentage'])}"
+        if "percentage" in item
+        else ""
+    )
+    + f" - {format_percent(item['probability'])}"
+)
+
     }
 
     reward_strings = []
