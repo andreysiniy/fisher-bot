@@ -105,6 +105,14 @@
                 "message": "you fished a fishing rod fishing a fishing rod fishing absolutely fucking nothing."
             },
             {
+                "weight": 2174,
+                "message": "YOU RN --> waitingforfish"
+            },
+            {
+                "weight": 50,
+                "message": "THIS IS IT THIS IS A SIGN, ITS TIME FOR YOU TO GO OPEN A COUNTER STRIKE CASE MY MAN. YOU PULLING THIS IS SO FUCKIGN RARE THE STARS ARE FUCKING ALLIGNED BROTHER THIS IS THE MOMENT YOU'VE BEEN WAITING FOR. GOLD GOLD GOLD"
+            },
+            {
                 "weight": 100,
                 "message": "jigsaw 🃏 FOR YOUR FINAL CHALLENGE @{username}: TWO CHOICES, GAMBLE ALL OR LOSE IT ALL🃏 jigsaw"
             }
@@ -122,18 +130,53 @@
             },
             {
                 "value": 1000,
-                "weight": 10450,
-                "message": "Joel common fish! +{value}🧊"
+                "weight": 3125,
+                "message": "🐟 common carp! +{value}🧊"
             },
             {
                 "value": 1500,
-                "weight": 10450,
-                "message": "AUGH common fish! +{value}🧊"
+                "weight": 3125,
+                "message": "🐠 common clownfish! +{value}🧊"
             },
             {
-                "value": 150000,
+                "value": 1000,
+                "weight": 3125,
+                "message": "🐡 common blowfish! +{value}🧊 "
+            },
+            {
+                "value": 100,
+                "weight": 3125,
+                "message": "🥾 you pulled garbage +{value}🧊"
+            },
+            {
+                "value": 100,
+                "weight": 3125,
+                "message": "🌿 you pulled garbage +{value}🧊"
+            },
+            {
+                "value": 5000,
+                "weight": 2344,
+                "message": "AUGH uncommon meme fish! +{value}🧊"
+            },
+            {
+                "value": 5000,
+                "weight": 2344,
+                "message": "Joel uncommon meme fish! +{value}🧊"
+            },
+            {
+                "value": 5000,
+                "weight": 2344,
+                "message": "!fis uncommon meme fish! +{value}🧊"
+            },
+            {
+                "value": 5000,
+                "weight": 2344,
+                "message": "catfish uncommon meme fish! +{value}🧊"
+            },
+            {
+                "value": 200000,
                 "weight": 2000,
-                "message": "!? rare golden pepe Goldge +{value}🧊"
+                "message": "wow rare golden pepe Goldge +{value}🧊"
             },
             {
                 "value": 50000,
@@ -183,34 +226,54 @@
             {
                 "value": -10000,
                 "weight": 2000,
-                "message": "oh thats blitzels oshawott on the line, quick release it before it...?! {value}🧊 ... ah, fucking unlucky"
+                "message": "oh thats blitzels oshawott on the line, quick release it before it...?! {value}🧊 ... ahhh fucking unlucky"
+            },
+            {
+                "value": -50000,
+                "weight": 500,
+                "message": "MEGA CRASHOUT RIP YOUR ALL YOUR FISHING GEAR!!! GAESAEKKIA {value}🧊"
+            },
+            {
+                "value": 1000000,
+                "weight": 100,
+                "message": "FORSEN!? forsenSwim +{value}🧊"
+            },
+            {
+                "value": 200000,
+                "weight": 500,
+                "message": "YOU PULLED YOURMOTHER +{value}🧊"
+            },
+            {
+                "value": -1000000,
+                "weight": 50,
+                "message": "jakeing AHH IM JAKEING IT AHH IM JAKEING IT AHHH IM JAKEING IT {username} I AM FUCKING JAKEING IT {value}🧊"
             }
         ],
         "percentage_points": [
             {
-                "percentage": -0.2,
+                "percentage": -0.1,
                 "weight": 1000,
-                "message": "get taxed lmao {percentage}  ☠️ 💀"
+                "message": "unlucky, snowy taxes are calling {percentage} sunowiELECTRO"
             },
             {
-                "percentage": -0.5,
-                "weight": 100,
-                "message": "CRASH AND BURN {percentage} 🔥📉"
+                "percentage": -0.2,
+                "weight": 200,
+                "message": "STOCK MARKET CRASH {percentage} 📉🔥"
             },
             {
                 "percentage": 0.1,
                 "weight": 1200,
-                "message": "tiny gains +{percentage} 📈"
+                "message": "STOCKS LOOKING BULLISH TODAY +{percentage} 📈✅"
             },
             {
-                "percentage": 0.3,
-                "weight": 1000,
-                "message": "THE STOCKS ARE RISING +{percentage} WOW"
+                "percentage": 0.01,
+                "weight": 3000,
+                "message": "LUCKY SNOWY VIEWER PAYOUT (ITS BASICALLY NOTHING) +{percentage}"
             },
             {
-                "percentage": 0.7,
-                "weight": 500,
-                "message": "BIG GREEN DAY +{percentage} 🤑💸"
+                "percentage": 0.5,
+                "weight": 100,
+                "message": "INSTEAD OF FISHING I GUESS YOU ROBBED A FUCKING BANK! CINEMA +{percentage}🧊"
             }
         ],
         "russian_roulette": [
@@ -222,7 +285,7 @@
                 "percentage": 0.3,
                 "shot_message": "💥 -{percentage} points ☠",
                 "safe_message": "*Click* ... safe! live to fish another day",
-                "message": "you fished up a loaded revolver, your sanity can't take this anymore! alright {bullets} bullet in {chambers} chambers here goes nothing! Enough"
+                "message": "you fished up a loaded revolver, your sanity can't take this anymore! alright {bullets} bullet here goes nothing! Enough"
             },
             {
                 "weight": 667,
@@ -232,7 +295,7 @@
                 "value": 40000,
                 "shot_message": "💥 -{value} points, yeowch!",
                 "safe_message": "*Click* ... safe! live to fish another day",
-                "message": "you fished up a loaded revolver, your sanity can't take this anymore! alright {bullets} bullet in {chambers} chambers here goes nothing! Enough"
+                "message": "you fished up a loaded revolver, your sanity can't take this anymore! alright {bullets} bullets here goes nothing! Enough"
             },
             {
                 "weight": 667,
@@ -241,23 +304,52 @@
                 "penalty_type": "nothing",
                 "shot_message": "💥 {username} should have got shot but... the bullets are fake?!",
                 "safe_message": "*Click* ... safe! live to fish another day",
-                "message": "you fished up a loaded revolver, your sanity can't take this anymore! alright {bullets} bullet in {chambers} chambers here goes nothing! Enough"
+                "message": "you fished up a loaded revolver, your sanity can't take this anymore! alright {bullets} bullets here goes nothing! Enough"
+            },
+            {
+                "weight": 250,
+                "chambers": 2,
+                "bullets": 1,
+                "penalty_type": "nothing",
+                "shot_message": "💥 {username} should have got shot but... the bullets are fake?!",
+                "safe_message": "*Click* ... safe! live to fish another day",
+                "message": "you fished up a loaded shotgun NAILS time for a makeout session! alright {bullets} shell in the chamber 50/50 here goes nothing! Enough"
+            },
+            {
+                "weight": 250,
+                "chambers": 2,
+                "bullets": 1,
+                "penalty_type": "points",
+                "value": 20000,
+                "shot_message": "💥 -{value} points, yeowch!",
+                "safe_message": "*Click* ... safe! live to fish another day",
+                "message": "you fished up a loaded shotgun NAILS time for a makeout session! alright {bullets} shell in the chamber 50/50 here goes nothing! Enough"
+            },
+            {
+                "weight": 150,
+                "chambers": 2,
+                "bullets": 1,
+                "penalty_type": "percentage",
+                "percentage": 0.3,
+                "shot_message": "💥 -{percentage} points ☠",
+                "safe_message": "*Click* ... safe! live to fish another day",
+                "message": "you fished up a loaded shotgun NAILS time for a makeout session! alright {bullets} shell in the chamber 50/50 here goes nothing! Enough"
             }
         ],
         "robbery": [
             {
-                "weight": 1000,
+                "weight": 2000,
                 "message": "you fished up a loaded revolver, time for a robbery!",
                 "robbery_message": "{victim} got robbed by {username} for {value} points!",
                 "value": 100000,
-                "range": 3
+                "range": 7
             },
             {
-                "weight": 1000,
+                "weight": 2000,
                 "message": "you fished up a loaded revolver, time for a robbery!",
                 "robbery_message": "{victim} got robbed by {username} for {percentage} points!",
                 "percentage": 0.1,
-                "range": 3
+                "range": 7
             }
         ]
     }
