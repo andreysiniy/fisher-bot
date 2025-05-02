@@ -249,6 +249,22 @@
                 "safe_message": "*Click* ... safe! live to fish another day",
                 "message": "you fished up a loaded revolver, your sanity can't take this anymore! alright {bullets} bullet in {chambers} chambers here goes nothing! Enough"
             }
+        ],
+        "robbery": [
+            {
+                "weight": 1000,
+                "message": "you fished up a loaded revolver, time for a robbery!",
+                "robbery_message": "{victim} got robbed by {username} for {value} points!",
+                "value": 100000,
+                "range": 3
+            },
+            {
+                "weight": 1000,
+                "message": "you fished up a loaded revolver, time for a robbery!",
+                "robbery_message": "{victim} got robbed by {username} for {percentage} points!",
+                "percentage": 0.1,
+                "range": 3
+            }
         ]
     }
 }
