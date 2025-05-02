@@ -67,13 +67,12 @@ class FishRewards:
         chosen_type = types[all_rewards.index(chosen_reward)]
 
         chosen_reward["type"] = chosen_type
-        if chosen_type != "nothing":
-            chosen_reward["cmd"] = self.cmds[chosen_type]
-        else:
-            chosen_reward["cmd"] = ""
+
+        chosen_reward["cmd"] = self.cmds.get(chosen_type, "")
         
         if chosen_reward["type"] == "points":
             chosen_reward["value"] *= self.multiplier 
+        print(f"Chosen reward: {chosen_reward}")
         return chosen_reward
 
 

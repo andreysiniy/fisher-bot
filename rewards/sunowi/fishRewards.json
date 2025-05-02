@@ -97,7 +97,7 @@
                 "message": "whats up fuckers i suggest you lock in! wingo"
             },
             {
-                "weight": 2174,
+                "weight": 1000,
                 "message": "HOLY BOOBA YOU FISHED UP AN ANIME girl!? FREE VTUBER TIME pogs -> sunowi"
             },
             {
@@ -205,9 +205,24 @@
                 "message": "get taxed lmao {percentage}  ☠️ 💀"
             },
             {
+                "percentage": -0.5,
+                "weight": 100,
+                "message": "CRASH AND BURN {percentage} 🔥📉"
+            },
+            {
+                "percentage": 0.1,
+                "weight": 1200,
+                "message": "tiny gains +{percentage} 📈"
+            },
+            {
                 "percentage": 0.3,
                 "weight": 1000,
                 "message": "THE STOCKS ARE RISING +{percentage} WOW"
+            },
+            {
+                "percentage": 0.7,
+                "weight": 400,
+                "message": "BIG GREEN DAY +{percentage} 🤑💸"
             }
         ],
         "russian_roulette": [
