@@ -6,6 +6,9 @@ from datetime import datetime
 from fish.managers.streamelements_manager import StreamElementsManager
 import fish.managers.rewardManager as RewardHandler
 import fish.helpers.utils as Utils
+from fish.helpers.logger import get_logger
+
+logger = get_logger()
 
 class TwitchBot(commands.Bot):
     def __init__(self):
@@ -30,9 +33,8 @@ class TwitchBot(commands.Bot):
     @commands.command()
     @commands.cooldown(rate=1, per=420, bucket=commands.Bucket.member)
     async def fish(self, ctx: commands.Context):
-        print(f"fish command called by {ctx.author.name} on {ctx.channel.name} channel")
         rewardsFilePath = self.get_fish_rewards_file_path(ctx)
-        print(f"rewardsFilePath: {rewardsFilePath}")
+        print(f"Rewards file path: {rewardsFilePath}")
         reward = FishRewards(
             chatterRole="sub" if ctx.author.is_subscriber else "unsub", 
             rewardsFilePath=rewardsFilePath
@@ -40,6 +42,8 @@ class TwitchBot(commands.Bot):
         current_date = datetime.now().strftime("%d.%m.%Y %H:%M:%S")
         print(f"{current_date} {ctx.author.name} fished! on {ctx.channel.name} channel")
         await RewardHandler.handle_reward(reward, ctx, self.config.token, self.streamElements)
+        logger.info(f"{ctx.author.name} fished! on {ctx.channel.name} channel", extra={"user": ctx.author.name, "channel": ctx.channel.name, "reward": reward.chosenReward, "reward_path": rewardsFilePath})
+        print(f"------ {ctx.author.name} finished fishing on {ctx.channel.name} channel! ------")
 
 
     @commands.command()
