@@ -257,28 +257,28 @@
             },
             {
                 "percentage": -0.2,
-                "weight": 200,
+                "weight": 750,
                 "message": "STOCK MARKET CRASH {percentage} 📉🔥"
             },
             {
                 "percentage": 0.1,
-                "weight": 1200,
+                "weight": 1250,
                 "message": "STOCKS LOOKING BULLISH TODAY +{percentage} 📈✅"
             },
             {
                 "percentage": 0.01,
-                "weight": 3000,
+                "weight": 2500,
                 "message": "LUCKY SNOWY VIEWER PAYOUT (ITS BASICALLY NOTHING) +{percentage}"
             },
             {
                 "percentage": 0.5,
-                "weight": 100,
+                "weight": 500,
                 "message": "INSTEAD OF FISHING I GUESS YOU ROBBED A FUCKING BANK! CINEMA +{percentage}🧊"
             }
         ],
         "russian_roulette": [
             {
-                "weight": 3000,
+                "weight": 750,
                 "chambers": 6,
                 "bullets": 1,
                 "penalty_type": "percentage",
@@ -288,7 +288,7 @@
                 "message": "you fished up a loaded revolver, your sanity can't take this anymore! alright {bullets} bullet here goes nothing! Enough"
             },
             {
-                "weight": 667,
+                "weight": 750,
                 "chambers": 6,
                 "bullets": 2,
                 "penalty_type": "points",
@@ -307,7 +307,7 @@
                 "message": "you fished up a loaded revolver, your sanity can't take this anymore! alright {bullets} bullets here goes nothing! Enough"
             },
             {
-                "weight": 250,
+                "weight": 750,
                 "chambers": 2,
                 "bullets": 1,
                 "penalty_type": "nothing",
@@ -316,7 +316,7 @@
                 "message": "you fished up a loaded shotgun NAILS time for a makeout session! alright {bullets} shell in the chamber 50/50 here goes nothing! Enough"
             },
             {
-                "weight": 250,
+                "weight": 750,
                 "chambers": 2,
                 "bullets": 1,
                 "penalty_type": "points",
@@ -326,7 +326,7 @@
                 "message": "you fished up a loaded shotgun NAILS time for a makeout session! alright {bullets} shell in the chamber 50/50 here goes nothing! Enough"
             },
             {
-                "weight": 150,
+                "weight": 750,
                 "chambers": 2,
                 "bullets": 1,
                 "penalty_type": "percentage",
@@ -338,14 +338,14 @@
         ],
         "robbery": [
             {
-                "weight": 2000,
+                "weight": 2840,
                 "message": "you fished up a loaded revolver, time for a robbery!",
                 "robbery_message": "{victim} got robbed by {username} for {value} points!",
                 "value": 100000,
                 "range": 7
             },
             {
-                "weight": 2000,
+                "weight": 2500,
                 "message": "you fished up a loaded revolver, time for a robbery!",
                 "robbery_message": "{victim} got robbed by {username} for {percentage} points!",
                 "percentage": 0.1,
