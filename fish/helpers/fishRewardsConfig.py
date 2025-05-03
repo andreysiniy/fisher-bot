@@ -70,8 +70,33 @@ class FishRewards:
 
         chosen_reward["cmd"] = self.cmds.get(chosen_type, "")
         
-        if chosen_reward["type"] == "points":
-            chosen_reward["value"] *= self.multiplier 
+        mult_mapper = {
+            "value": lambda: chosen_reward.update({
+                "value": (
+                    int(chosen_reward["value"] * self.multiplier)
+                    if chosen_reward["value"] > 0
+                    else int(chosen_reward["value"] - chosen_reward["value"] * (self.multiplier - 1))
+                )
+            }),
+            "percentage": lambda: chosen_reward.update({
+                "percentage": (
+                    chosen_reward["percentage"] * self.multiplier
+                    if chosen_reward["percentage"] > 0
+                    else chosen_reward["percentage"] - chosen_reward["percentage"] * (self.multiplier - 1)
+                )
+            }),
+            "seconds": lambda: chosen_reward.update({
+                "seconds": (
+                    int(chosen_reward["seconds"] - chosen_reward["seconds"] * (self.multiplier - 1))
+                )
+            })
+        }
+        
+        for key, handler in mult_mapper.items():
+            if key in chosen_reward:
+                handler()
+
+
         print(f"Chosen reward: {chosen_reward}")
         return chosen_reward
 
