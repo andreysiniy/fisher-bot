@@ -78,6 +78,54 @@
                 "weight": 60,
                 "message": "THE STOCKS ARE RISING +{percentage} WOW"
             }
+        ],
+        "russian_roulette": [
+            {
+                "weight": 66,
+                "chambers": 6,
+                "bullets": 1,
+                "penalty_type": "timeout",
+                "seconds": 180,
+                "shot_message": "💥 {time} timeout!",
+                "safe_message": "*Click* ... safe! live to fish another day",
+                "message": "you fished up a loaded revolver, your sanity can't take this anymore! alright {bullets}\/{chambers} bullet here goes nothing! Enough"
+            },
+            {
+                "weight": 20,
+                "chambers": 6,
+                "bullets": 1,
+                "penalty_type": "percentage",
+                "percentage": 0.3,
+                "shot_message": "💥 -{percentage} points ☠",
+                "safe_message": "*Click* ... safe! live to fish another day",
+                "message": "you fished up a loaded revolver, your sanity can't take this anymore! alright {bullets}\/{chambers} bullet here goes nothing! Enough"
+            },
+            {
+                "weight": 66,
+                "chambers": 6,
+                "bullets": 2,
+                "penalty_type": "points",
+                "value": 40000,
+                "shot_message": "💥 -{value} points, yeowch!",
+                "safe_message": "*Click* ... safe! live to fish another day",
+                "message": "you fished up a loaded revolver, your sanity can't take this anymore! alright {bullets}\/{chambers} bullets here goes nothing! Enough"
+            }
+        ],
+        "robbery": [
+            {
+                "weight": 100,
+                "message": "you fished up a loaded revolver, time for a robbery!",
+                "robbery_message": "{victim} got robbed by {username} for {value} points!",
+                "value": 100000,
+                "range": 5
+            },
+            {
+                "weight": 100,
+                "message": "you fished up a loaded revolver, time for a robbery!",
+                "robbery_message": "{victim} got robbed by {username} for {percentage} points!",
+                "percentage": 0.2,
+                "range": 5
+            }
         ]
     }
   }
