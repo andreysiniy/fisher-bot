@@ -39,7 +39,7 @@ class FishRewards:
                 item_data = {"probability": probability}
             
                 if "value" in item:
-                    item_data["value"] = item["value"] * self.multiplier
+                    item_data["value"] = item["value"] 
                 if "seconds" in item:
                     item_data["seconds"] = item["seconds"]
                 if "percentage" in item:
