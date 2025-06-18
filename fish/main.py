@@ -1,7 +1,7 @@
 import sys
 import traceback
 
-from fish.bot.twitchBot import TwitchBot
+from fish.bot.twitch_bot import TwitchBot
 
 import os
 
