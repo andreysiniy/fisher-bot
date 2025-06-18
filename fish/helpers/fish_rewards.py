@@ -4,25 +4,46 @@ import random
 import copy
 
 def deep_merge(base, new):
-    for k, v in new.items():
-        if k in base and isinstance(base[k], dict) and isinstance(v, dict):
-            base[k] = deep_merge(base[k], v)
+    for key, new_value in new.items():
+        if key in base:
+            base_value = base[key]
+            if isinstance(base_value, dict) and isinstance(new_value, dict):
+                deep_merge(base_value, new_value)
+            elif isinstance(base_value, list) and isinstance(new_value, list):
+                base_value.extend(new_value)
+            else:
+                base[key] = new_value
         else:
-            base[k] = v
+            base[key] = new_value
     return base
+
+def load_rewards_from_file(file_path):
+    if not os.path.exists(file_path):
+        print(f"Warning: File not found, skipping: {file_path}")
+        return {}
+    with open(file_path, 'r', encoding='utf-8') as f:
+        return json.load(f)
+
+def resolve_inheritance_chain(config, file_path):
+    
+    if "extends" in config:
+        parent_filename = config.pop("extends") 
+        directory = os.path.dirname(file_path)
+        parent_path = os.path.join(directory, parent_filename)
+        parent_config = load_rewards_from_file(parent_path)
+        merged_config = deep_merge(parent_config, config)
+        return resolve_inheritance_chain(merged_config, file_path)
+    else:
+        return config
+
+def load_rewards_recursively(file_path):
+    current_config = load_rewards_from_file(file_path)
+    return resolve_inheritance_chain(current_config, file_path)
 
 class FishRewards:
     def __init__(self, chatterRole, rewardsFilePath):
         self.rewardsFile = rewardsFilePath
-        with open(self.rewardsFile, 'r', encoding='utf-8') as file:
-            rewards_data = json.load(file)
-        if "extends" in rewards_data:
-            base_file_path = os.path.join(os.path.dirname(rewardsFilePath), rewards_data["extends"])
-            with open(base_file_path, 'r', encoding='utf-8') as base_file:
-                base_data = json.load(base_file)
-            self.rewardsJSON = deep_merge(base_data, rewards_data)
-        else:
-            self.rewardsJSON = rewards_data
+        self.rewardsJSON = load_rewards_recursively(rewardsFilePath)
         self.chatterRole = chatterRole
         self.baseRewards = self.rewardsJSON["rewards"]
         self.cmds = self.rewardsJSON["cmds"]
