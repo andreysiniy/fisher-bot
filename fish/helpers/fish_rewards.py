@@ -50,7 +50,7 @@ class FishRewards:
         self.multiplier = self.rewardsJSON["base_multiplier"]
         if self.chatterRole == "sub":
             self.multiplier = self.rewardsJSON["sub_multiplier"]
-        self.chosenReward = self.choose_default_reward()
+        self.chosenReward = None
 
     def get_probabilities(self):
 

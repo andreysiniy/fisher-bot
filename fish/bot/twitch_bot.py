@@ -39,6 +39,7 @@ class TwitchBot(commands.Bot):
             chatterRole="sub" if ctx.author.is_subscriber else "unsub", 
             rewardsFilePath=rewardsFilePath
         )
+        reward.chosenReward = reward.choose_default_reward()
         current_date = datetime.now().strftime("%d.%m.%Y %H:%M:%S")
         print(f"{current_date} {ctx.author.name} fished! on {ctx.channel.name} channel")
         await RewardHandler.handle_reward(reward, ctx, self.config.token, self.streamElements)
