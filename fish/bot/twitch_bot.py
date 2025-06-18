@@ -4,7 +4,7 @@ from fish.helpers.configurator import Config
 from fish.helpers.fish_rewards import FishRewards
 from datetime import datetime
 from fish.managers.streamelements_manager import StreamElementsManager
-import fish.managers.rewardManager as RewardHandler
+import fish.managers.reward_manager as RewardHandler
 import fish.helpers.utils as Utils
 from fish.helpers.logger import get_logger
 
