@@ -3,11 +3,26 @@ import json
 import random
 import copy
 
+def deep_merge(base, new):
+    for k, v in new.items():
+        if k in base and isinstance(base[k], dict) and isinstance(v, dict):
+            base[k] = deep_merge(base[k], v)
+        else:
+            base[k] = v
+    return base
+
 class FishRewards:
     def __init__(self, chatterRole, rewardsFilePath):
         self.rewardsFile = rewardsFilePath
         with open(self.rewardsFile, 'r', encoding='utf-8') as file:
-            self.rewardsJSON = json.load(file)
+            rewards_data = json.load(file)
+        if "extends" in rewards_data:
+            base_file_path = os.path.join(os.path.dirname(rewardsFilePath), rewards_data["extends"])
+            with open(base_file_path, 'r', encoding='utf-8') as base_file:
+                base_data = json.load(base_file)
+            self.rewardsJSON = deep_merge(base_data, rewards_data)
+        else:
+            self.rewardsJSON = rewards_data
         self.chatterRole = chatterRole
         self.baseRewards = self.rewardsJSON["rewards"]
         self.cmds = self.rewardsJSON["cmds"]
