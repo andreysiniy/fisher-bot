@@ -29,9 +29,9 @@ def resolve_inheritance_chain(config, file_path):
     if "extends" in config:
         parent_filename = config.pop("extends") 
         directory = os.path.dirname(file_path)
-        parent_path = os.path.join(directory, parent_filename)
+        parent_path = directory + "/"+ parent_filename
         parent_config = load_rewards_from_file(parent_path)
-        merged_config = deep_merge(parent_config, config)
+        merged_config = deep_merge(copy.deepcopy(parent_config), config)
         return resolve_inheritance_chain(merged_config, file_path)
     else:
         return config
