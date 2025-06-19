@@ -58,7 +58,7 @@ class TwitchBot(commands.Bot):
         for msg in messages:
             message += msg
             message += " "
-        chunks = [message[i:i+255] for i in range(0, len(message), 255)]
+        chunks = [message[i:i+500] for i in range(0, len(message), 500)]
         for chunk in chunks:
             await ctx.send(chunk)
            
