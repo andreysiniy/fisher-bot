@@ -139,10 +139,10 @@ class RobberyRewardHandler(BaseRewardHandler):
         response_user1 = await self.streamelements.remove_user_points(user=user1, channel_id=channel_id, points=points_to_rob)
         response_user2 = await self.streamelements.add_user_points(user=user2, channel_id=channel_id, points=points_to_rob)
         await self.ctx.send(
-            f"{user2} ({Utils.format_large_number(response_user2['newAmount'])} "
-            f"({Utils.format_large_number_sign(response_user2['amount'])})) robbed "
-            f"{user1} ({Utils.format_large_number(response_user1['newAmount'])} "
-            f"({Utils.format_large_number_sign(response_user1['amount'])}))!"
+            f"{user2} {Utils.format_large_number(response_user2['newAmount'])} "
+            f"({Utils.format_large_number_sign(response_user2['amount'])}) robbed "
+            f"{user1} {Utils.format_large_number(response_user1['newAmount'])} "
+            f"({Utils.format_large_number_sign(response_user1['amount'])})!"
             )
 
 
