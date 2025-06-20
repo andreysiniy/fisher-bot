@@ -1,4 +1,5 @@
-
+import os.path
+import json
 
 def format_number(value):
     if value % 1 == 0:
@@ -109,3 +110,18 @@ def generate_reward_strings(reward_probabilities):
             reward_strings.append(reward_string)
 
     return reward_strings
+
+    
+def get_fish_rewards_file_path(ctx):
+    rewardsFilePathCfg = f"rewards/{ctx.channel.name}/path_cfg.json"
+    rewardsFilePath = f"rewards/{ctx.channel.name}/"
+    with open(rewardsFilePathCfg, 'r', encoding='utf-8') as f:
+        pathCfg = json.load(f)
+    if ctx.author.is_vip:
+        rewardsFilePath += pathCfg.get("vip", "fishRewards_vip.json")
+    elif ctx.author.is_mod | ctx.author.is_broadcaster:
+        rewardsFilePath += pathCfg.get("mod", "fishRewards_mod.json")
+    else:
+        rewardsFilePath += pathCfg.get("base", "fishRewards.json")
+    return rewardsFilePath
+    

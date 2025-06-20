@@ -33,7 +33,7 @@ class TwitchBot(commands.Bot):
     @commands.command()
     @commands.cooldown(rate=1, per=420, bucket=commands.Bucket.member)
     async def fish(self, ctx: commands.Context):
-        rewardsFilePath = self.get_fish_rewards_file_path(ctx)
+        rewardsFilePath = Utils.get_fish_rewards_file_path(ctx)
         print(f"Rewards file path: {rewardsFilePath}")
         reward = FishRewards(
             chatterRole="sub" if ctx.author.is_subscriber else "unsub", 
@@ -50,7 +50,7 @@ class TwitchBot(commands.Bot):
     @commands.command()
     @commands.cooldown(rate=1, per=10, bucket=commands.Bucket.member)
     async def fishrewards(self, ctx: commands.Context):
-        rewardsFilePath = self.get_fish_rewards_file_path(ctx)
+        rewardsFilePath = Utils.get_fish_rewards_file_path(ctx)
         reward = FishRewards(chatterRole="sub" if ctx.author.is_subscriber else "unsub", rewardsFilePath=rewardsFilePath)
         messages = []
         messages = Utils.generate_reward_strings(reward.get_probabilities())
@@ -63,13 +63,3 @@ class TwitchBot(commands.Bot):
             await ctx.send(chunk)
            
     
-    @staticmethod
-    def get_fish_rewards_file_path(ctx):
-        rewardsFilePath = f"rewards/{ctx.channel.name}/fishRewards"
-        if ctx.author.is_vip:
-            rewardsFilePath += "_vip.json"
-        elif ctx.author.is_mod | ctx.author.is_broadcaster:
-            rewardsFilePath += "_mod.json"
-        else:
-            rewardsFilePath += ".json"
-        return rewardsFilePath
