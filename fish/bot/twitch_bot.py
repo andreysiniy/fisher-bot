@@ -39,9 +39,15 @@ class TwitchBot(commands.Bot):
             chatterRole="sub" if ctx.author.is_subscriber else "unsub", 
             rewardsFilePath=rewardsFilePath
         )
+        if (reward.chatterRole == "sub"):
+            cooldown = reward.rewardsJSON.get("sub_cooldown", 1000)
+        else:
+            cooldown = reward.rewardsJSON.get("base_cooldown", 1000)
+        Utils.set_command_cooldown(ctx, cooldown)
         reward.chosenReward = reward.choose_default_reward()
         current_date = datetime.now().strftime("%d.%m.%Y %H:%M:%S")
         print(f"{current_date} {ctx.author.name} fished! on {ctx.channel.name} channel")
+        print(f"User {ctx.author.name} cooldown is {Utils.format_time(cooldown)}")
         await RewardHandler.handle_reward(reward, ctx, self.config.token, self.streamElements)
         logger.info(f"{ctx.author.name} fished! on {ctx.channel.name} channel", extra={"user": ctx.author.name, "channel": ctx.channel.name, "reward": reward.chosenReward, "reward_path": rewardsFilePath})
         print(f"------ {ctx.author.name} finished fishing on {ctx.channel.name} channel! ------")
