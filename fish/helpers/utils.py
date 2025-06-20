@@ -125,3 +125,11 @@ def get_fish_rewards_file_path(ctx):
         rewardsFilePath += pathCfg.get("base", "fishRewards.json")
     return rewardsFilePath
     
+   
+def remove_user_cooldown(ctx):
+    key_to_delete = (ctx.author.name, ctx.author.id)
+    del ctx.command._cooldowns[0]._cache[key_to_delete]
+
+
+def set_command_cooldown(ctx, seconds: int):
+    ctx.command._cooldowns[0]._per = seconds
