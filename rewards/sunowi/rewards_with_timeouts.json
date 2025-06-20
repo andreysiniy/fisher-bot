@@ -1,0 +1,39 @@
+{
+    "extends": "rewards_base_no_timeouts.json",
+    "rewards": {
+        "timeout": [
+            {
+                "seconds": 30,
+                "weight": 3000,
+                "message": "WAJAJA {time} timeout MODS"
+            },
+            {
+                "seconds": 180,
+                "weight": 2000,
+                "message": "no fish... you crashed out and fucking broke everything SSIBAL {time} timeout ❌"
+            }
+        ],
+        "russian_roulette": [
+            {
+                "weight": 650,
+                "chambers": 6,
+                "bullets": 1,
+                "penalty_type": "timeout",
+                "seconds": 180,
+                "shot_message": "💥 {time} timeout!",
+                "safe_message": "*Click* ... safe! live to fish another day",
+                "message": "you fished up a loaded revolver, your sanity can't take this anymore! alright {bullets} bullet here goes nothing! Enough"
+            },
+            {
+                "weight": 750,
+                "chambers": 2,
+                "bullets": 1,
+                "penalty_type": "timeout",
+                "seconds": 180,
+                "shot_message": "💥 {time} timeout!",
+                "safe_message": "*Click* ... safe! live to fish another day",
+                "message": "you fished up a loaded shotgun NAILS time for a makeout session! alright {bullets} shell in the chamber 50/50 here goes nothing! Enough"
+            }
+        ]
+    }
+}

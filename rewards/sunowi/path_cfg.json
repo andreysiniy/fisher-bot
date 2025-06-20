@@ -1,0 +1,5 @@
+{
+    "base": "rewards_default.json",
+    "vip": "rewards_vips.json",
+    "mod": "rewards_mods.json"
+}

@@ -2,6 +2,8 @@
     "base_message": "{username} is fishing! !fish ... ",
     "base_multiplier": 1.0,
     "sub_multiplier": 1.0,
+    "base_cooldown": 420,
+    "sub_cooldown": 300,
     "cmds": {
         "points": "!addpoints {username} {value}",
         "timeout": "",
@@ -13,63 +15,63 @@
     "rewards": {
         "nothing": [
             {
-                "weight": 1754,
+                "weight": 1568,
                 "message": "not even a nibble.."
             },
             {
-                "weight": 2049,
+                "weight": 1835,
                 "message": "A FISH! SCHIZ"
             },
             {
-                "weight": 2049,
+                "weight": 1831,
                 "message": "my man had Casper on the line 💀"
             },
             {
-                "weight": 2049,
+                "weight": 1831,
                 "message": "📞∼ Your mother is call you! RETAAARD! 🗣️"
             },
             {
-                "weight": 1614,
+                "weight": 1442,
                 "message": "hot Catgirls 0ALERT in your area!"
             },
             {
-                "weight": 1615,
+                "weight": 1443,
                 "message": "🧊 0NotAllowed"
             },
             {
-                "weight": 1615,
+                "weight": 1443,
                 "message": "miko zero bitches aye?"
             },
             {
-                "weight": 1615,
+                "weight": 1443,
                 "message": "legendary fent pull!"
             },
             {
-                "weight": 1615,
+                "weight": 1443,
                 "message": "NOTHING, ZERO EVEN!"
             },
             {
-                "weight": 2049,
+                "weight": 1831,
                 "message": "WOW major depression Pointless"
             },
             {
-                "weight": 1615,
+                "weight": 1443,
                 "message": "PepeNPC you get nothing!"
             },
             {
-                "weight": 1615,
+                "weight": 1443,
                 "message": "!? ... it fled"
             },
             {
-                "weight": 1866,
+                "weight": 1668,
                 "message": "KEEPGAMBLING"
             },
             {
-                "weight": 1615,
+                "weight": 1443,
                 "message": "no luck"
             },
             {
-                "weight": 1615,
+                "weight": 1443,
                 "message": "ㅤ"
             },
             {
@@ -97,11 +99,11 @@
                 "message": "whats up fuckers i suggest you lock in! wingo"
             },
             {
-                "weight": 300,
+                "weight": 800,
                 "message": "HOLY BOOBA YOU FISHED UP AN ANIME girl!? FREE VTUBER TIME pogs -> sunowi"
             },
             {
-                "weight": 2050,
+                "weight": 1550,
                 "message": "you fished a fishing rod fishing a fishing rod fishing absolutely fucking nothing."
             },
             {
@@ -205,7 +207,7 @@
             },
             {
                 "value": 1000000,
-                "weight": 300,
+                "weight": 800,
                 "message": "FORSEN!? forsenSwim +{value}🧊"
             },
             {
@@ -245,14 +247,14 @@
             },
             {
                 "value": -1000000,
-                "weight": 300,
+                "weight": 800,
                 "message": "jakeing AHH IM JAKEING IT AHH IM JAKEING IT AHHH IM JAKEING IT {username} I AM FUCKING JAKEING IT {value}🧊"
             }
         ],
         "percentage_points": [
             {
                 "percentage": -0.1,
-                "weight": 2000,
+                "weight": 1450,
                 "message": "unlucky, snowy taxes are calling {percentage} sunowiELECTRO"
             },
             {
@@ -267,18 +269,18 @@
             },
             {
                 "percentage": 0.01,
-                "weight": 4000,
+                "weight": 4500,
                 "message": "LUCKY SNOWY VIEWER PAYOUT (ITS BASICALLY NOTHING) +{percentage}"
             },
             {
                 "percentage": 0.5,
-                "weight": 1000,
+                "weight": 1050,
                 "message": "INSTEAD OF FISHING I GUESS YOU ROBBED A FUCKING BANK! CINEMA +{percentage}🧊"
             }
         ],
         "russian_roulette": [
             {
-                "weight": 350,
+                "weight": 550,
                 "chambers": 6,
                 "bullets": 1,
                 "penalty_type": "percentage",
@@ -288,7 +290,7 @@
                 "message": "you fished up a loaded revolver, your sanity can't take this anymore! alright {bullets} bullet here goes nothing! Enough"
             },
             {
-                "weight": 1150,
+                "weight": 1050,
                 "chambers": 6,
                 "bullets": 2,
                 "penalty_type": "points",
@@ -307,7 +309,7 @@
                 "message": "you fished up a loaded revolver, your sanity can't take this anymore! alright {bullets} bullets here goes nothing! Enough"
             },
             {
-                "weight": 750,
+                "weight": 1050,
                 "chambers": 2,
                 "bullets": 1,
                 "penalty_type": "nothing",
@@ -326,7 +328,7 @@
                 "message": "you fished up a loaded shotgun NAILS time for a makeout session! alright {bullets} shell in the chamber 50/50 here goes nothing! Enough"
             },
             {
-                "weight": 750,
+                "weight": 450,
                 "chambers": 2,
                 "bullets": 1,
                 "penalty_type": "percentage",
@@ -338,14 +340,14 @@
         ],
         "robbery": [
             {
-                "weight": 3000,
+                "weight": 3200,
                 "message": "you fished up a loaded revolver, time for a robbery!",
                 "robbery_message": "{victim} got robbed by {username} for {value} points!",
                 "value": 100000,
                 "range": 7
             },
             {
-                "weight": 2000,
+                "weight": 1800,
                 "message": "you fished up a loaded revolver, time for a robbery!",
                 "robbery_message": "{victim} got robbed by {username} for {percentage} points!",
                 "percentage": 0.1,
