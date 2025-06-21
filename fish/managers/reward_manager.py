@@ -2,6 +2,7 @@
 import fish.helpers.utils as Utils
 import random
 import asyncio
+from fish.helpers.fish_rewards import FishRewards
 
 class BaseRewardHandler:
     def __init__(self, reward, ctx, token, streamelements):
@@ -184,7 +185,22 @@ class RobberyRewardHandler(BaseRewardHandler):
             if key in self.reward.chosenReward:
                 await handler()
         
-
+class DupeRewardHandler(BaseRewardHandler):
+    async def handle(self):
+        message = ["", ""]
+        message[0] = self.reward.rewardsJSON["base_message"].format(username = self.ctx.author.name)
+        message[0] += self.reward.chosenReward["message"].format(username = self.ctx.author.name)
+        await self.ctx.send(message[0])
+        delay = self.reward.chosenReward.get("delay", 3)
+        amount = self.reward.chosenReward.get("amount", 2)
+        for i in range(1, amount + 1):
+            rewardsFilePath = Utils.get_fish_rewards_file_path(self.ctx)
+            reward = FishRewards(chatterRole="sub" if self.ctx.author.is_subscriber else "unsub", rewardsFilePath=rewardsFilePath)
+            reward.chosenReward = reward.choose_default_reward()
+            await asyncio.sleep(delay)
+            await handle_reward(reward, self.ctx, self.token, self.streamelements)
+            
+        
 
 class CustomRewardHandler(BaseRewardHandler):
     async def handle(self):
@@ -209,6 +225,7 @@ reward_handler_mapping = {
     "vip": VipRewardHandler,
     "percentage_points": PercentagePointsRewardHandler,
     "russian_roulette": RussianRouletteRewardHandler,
+    "dupe": DupeRewardHandler,
     "robbery": RobberyRewardHandler,
     "nothing": NothingRewardHandler
 }
