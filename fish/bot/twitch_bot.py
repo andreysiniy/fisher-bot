@@ -64,8 +64,23 @@ class TwitchBot(commands.Bot):
         for msg in messages:
             message += msg
             message += " "
-        chunks = [message[i:i+500] for i in range(0, len(message), 500)]
-        for chunk in chunks:
-            await ctx.send(chunk)
+        chunks = []
+        current_pos = 0
+        while current_pos < len(message):
+            end_pos = current_pos + 500
+            if end_pos >= len(message):
+                chunks.append(message[current_pos:])
+                break
+            split_pos = message.rfind(' ', current_pos, end_pos)
+            if split_pos == -1 or split_pos <= current_pos:
+                actual_end = end_pos
+            else:
+                actual_end = split_pos   
+            chunk = message[current_pos:actual_end]
+            chunks.append(chunk)
+            current_pos = actual_end + 1 if actual_end == split_pos else actual_end 
+        
+        for chunk_part in chunks:
+            await ctx.send(chunk_part)
            
     
