@@ -1,0 +1,5 @@
+{
+    "base": "fishRewards.json",
+    "vip": "fishRewards_vip.json",
+    "mod": "fishRewards_mod.json"
+}

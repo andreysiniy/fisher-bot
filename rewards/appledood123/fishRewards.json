@@ -1,77 +1,10 @@
 {
-    "base_message": "{username} is fishing! !fish ... ",
-    "base_multiplier": 1.0,
-    "sub_multiplier": 1.3,
-    "cmds": {
-        "points": "!addpoints {username} {value}",
-        "timeout": "",
-        "vip": "" 
-    },
+    "extends": "fishRewards_vip.json",
     "rewards": {
-        "nothing": [
-            {
-                "weight": 1350,
-                "message": "NOTHING jonkler 0ALERT jonkler 0ALERT jonkler 0ALERT"
-            },
-            {
-                "weight": 1350,
-                "message": "ABSOLUTELY ZERO THEVOICES 0LiveReaction Alarm"
-            },
-            {
-                "weight": 375,
-                "message": "ZERO jonkler 0LiveReaction"
-            },
-            {
-                "weight": 375,
-                "message": "mitosis"               
-            },
-            {
-                "weight": 375,
-                "message": "uuhuu"                  
-            },
-            {
-                "weight": 375,
-                "message": "000000000 ! 0NotAllowed"
-            }
-        ],
-        "points": [
-            {
-                "value": 10000,
-                "weight": 1050,
-                "message": "GYAT COCKA +{value} EZ"
-            },
-            {
-                "value": 25000,
-                "weight": 675,
-                "message": "boing +{value} AMAZING!!! Goldge"
-            },
-            {
-                "value": 50000,
-                "weight": 510,
-                "message": "babah HUGE +{value} babah"
-            },
-            {
-                "value": 70000,
-                "weight": 300,
-                "message": "babah 0ALERT !! HOLY SHIT +{value} !! babah 0ALERT"
-            },
-            {
-                "value": 500000,
-                "weight": 120,
-                "message": "babah 0ALERT  BRILLIANT  HOLY FUCKING SHIT +{value} NO WAY  BRILLIANT  babah 0ALERT WOW"
-            }
-        ],
-        "timeout": [
-            {
-                "seconds": 60,
-                "weight": 120,
-                "message": "djgruzovik {time} minute timeout watameBruhFaint gg"
-            }
-        ],
 		"vip": [
             {
                 "weight": 1,
-                "message": "WOW OMG WOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOAHYEAHBABYTHATSWHATIVEBEENWAITINGFOR YOU JUST FISHED FREE VIP PETTHEVIPS  OMG 0ALERT WOW vladskuf"
+                "message": "WOW OMG WOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOAHYEAHBABYTHATSWHATIVEBEENWAITINGFOR YOU JUST FISHED FREE VIP PETTHEVIPS  OMG 0ALERT WOW Nirux"
             }
         ]
     }

@@ -2,10 +2,13 @@
     "base_message": "{username} is fishing! !fish ... ",
     "base_multiplier": 1.0,
     "sub_multiplier": 1.3,
+    "base_cooldown": 600,
+    "sub_cooldown": 300,
     "cmds": {
         "points": "!addpoints {username} {value}",
         "timeout": "",
-        "vip": ""
+        "vip": "",
+        "percentage_points": ""
     },
     "rewards": {
         "nothing": [
@@ -18,19 +21,11 @@
                 "message": "ABSOLUTELY ZERO THEVOICES 0LiveReaction Alarm"
             },
             {
-                "weight": 166,
+                "weight": 291,
                 "message": "ZERO jonkler 0LiveReaction"
             },
             {
-                "weight": 125,
-                "message": "mitosis"               
-            },
-            {
-                "weight": 125,
-                "message": "uuhuu"                  
-            },
-            {
-                "weight": 125,
+                "weight": 250,
                 "message": "000000000 ! 0NotAllowed"
             }
         ],
@@ -59,6 +54,56 @@
                 "value": 500000,
                 "weight": 40,
                 "message": "babah 0ALERT  BRILLIANT  HOLY FUCKING SHIT +{value} NO WAY  BRILLIANT  babah 0ALERT WOW"
+            }
+        ],
+        "percentage_points": [
+            {
+                "percentage": -0.2,
+                "weight": 20,
+                "message": "get taxed lmao {percentage}  ☠️ 💀"
+            },
+            {
+                "percentage": 0.3,
+                "weight": 60,
+                "message": "THE STOCKS ARE RISING +{percentage} WOW"
+            }
+        ],
+        "russian_roulette": [
+            {
+                "weight": 20,
+                "chambers": 6,
+                "bullets": 1,
+                "penalty_type": "percentage",
+                "percentage": 0.3,
+                "shot_message": "💥 -{percentage} points ☠",
+                "safe_message": "*Click* ... safe! live to fish another day",
+                "message": "you fished up a loaded revolver, your sanity can't take this anymore! alright {bullets}\/{chambers} bullet here goes nothing! Enough"
+            },
+            {
+                "weight": 66,
+                "chambers": 6,
+                "bullets": 2,
+                "penalty_type": "points",
+                "value": 40000,
+                "shot_message": "💥 -{value} points, yeowch!",
+                "safe_message": "*Click* ... safe! live to fish another day",
+                "message": "you fished up a loaded revolver, your sanity can't take this anymore! alright {bullets}\/{chambers} bullets here goes nothing! Enough"
+            }
+        ],
+        "robbery": [
+            {
+                "weight": 100,
+                "message": "you fished up a loaded revolver, time for a robbery!",
+                "robbery_message": "{victim} got robbed by {username} for {value} points!",
+                "value": 100000,
+                "range": 5
+            },
+            {
+                "weight": 100,
+                "message": "you fished up a loaded revolver, time for a robbery!",
+                "robbery_message": "{victim} got robbed by {username} for {percentage} points!",
+                "percentage": 0.2,
+                "range": 5
             }
         ]
     }

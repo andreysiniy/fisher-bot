@@ -1,71 +1,23 @@
 {
-    "base_message": "{username} is fishing! !fish ... ",
-    "base_multiplier": 1.0,
-    "sub_multiplier": 1.3,
-    "cmds": {
-        "points": "!addpoints {username} {value}",
-        "timeout": "",
-        "vip": ""
-    },
+    "extends": "fishRewards_mod.json",
     "rewards": {
-        "nothing": [
-            {
-                "weight": 450,
-                "message": "NOTHING jonkler 0ALERT jonkler 0ALERT jonkler 0ALERT"
-            },
-            {
-                "weight": 450,
-                "message": "ABSOLUTELY ZERO THEVOICES 0LiveReaction Alarm"
-            },
-            {
-                "weight": 126,
-                "message": "ZERO jonkler 0LiveReaction"
-            },
-            {
-                "weight": 125,
-                "message": "mitosis"               
-            },
-            {
-                "weight": 125,
-                "message": "uuhuu"                  
-            },
-            {
-                "weight": 161,
-                "message": "000000000 ! 0NotAllowed"
-            }
-        ],
-        "points": [
-            {
-                "value": 10000,
-                "weight": 350,
-                "message": "GYAT COCKA +{value} EZ"
-            },
-            {
-                "value": 25000,
-                "weight": 225,
-                "message": "boing +{value} AMAZING!!! Goldge"
-            },
-            {
-                "value": 50000,
-                "weight": 170,
-                "message": "babah HUGE +{value} babah"
-            },
-            {
-                "value": 70000,
-                "weight": 100,
-                "message": "babah 0ALERT !! HOLY SHIT +{value} !! babah 0ALERT"
-            },
-            {
-                "value": 500000,
-                "weight": 40,
-                "message": "babah 0ALERT  BRILLIANT  HOLY FUCKING SHIT +{value} NO WAY  BRILLIANT  babah 0ALERT WOW"
-            }
-        ],
         "timeout": [
             {
                 "seconds": 60,
-                "weight": 4,
+                "weight": 60,
                 "message": "djgruzovik {time} minute timeout watameBruhFaint gg"
+            }
+        ],
+        "russian_roulette": [
+            {
+                "weight": 66,
+                "chambers": 6,
+                "bullets": 1,
+                "penalty_type": "timeout",
+                "seconds": 180,
+                "shot_message": "💥 {time} timeout!",
+                "safe_message": "*Click* ... safe! live to fish another day",
+                "message": "you fished up a loaded revolver, your sanity can't take this anymore! alright {bullets}\/{chambers} bullet here goes nothing! Enough"
             }
         ]
     }
