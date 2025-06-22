@@ -2,6 +2,7 @@ import os.path
 import json
 import random
 import copy
+from fish.helpers.user_state import get_user_state
 
 def deep_merge(base, new):
     for key, new_value in new.items():
@@ -41,11 +42,30 @@ def load_rewards_recursively(file_path):
     return resolve_inheritance_chain(current_config, file_path)
 
 class FishRewards:
-    def __init__(self, chatterRole, rewardsFilePath):
+    def __init__(self, chatterRole, rewardsFilePath, username: str, channel_name: str):
         self.rewardsFile = rewardsFilePath
         self.rewardsJSON = load_rewards_recursively(rewardsFilePath)
         self.chatterRole = chatterRole
-        self.baseRewards = self.rewardsJSON["rewards"]
+
+        user_state = get_user_state(channel_name, username)
+        global_state = get_user_state(channel_name, "global")
+        unlocked_ids = set(user_state.get("unlocked_ids"))
+        unlocked_ids.update(set(global_state.get("unlocked_ids")))
+        filtered_base_rewards = {}
+        for category, rewards_list in self.rewardsJSON["rewards"].items():
+            
+            available_rewards = []
+            for reward in rewards_list:
+                is_locked = reward.get("locked", False)
+                reward_id = reward.get("id")
+
+                if not is_locked or (reward_id and reward_id in unlocked_ids):
+                    available_rewards.append(reward)
+            
+            if available_rewards:
+                filtered_base_rewards[category] = available_rewards
+
+        self.baseRewards = filtered_base_rewards
         self.cmds = self.rewardsJSON["cmds"]
         self.multiplier = self.rewardsJSON["base_multiplier"]
         if self.chatterRole == "sub":

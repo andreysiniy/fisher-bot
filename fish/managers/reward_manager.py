@@ -3,6 +3,7 @@ import fish.helpers.utils as Utils
 import random
 import asyncio
 from fish.helpers.fish_rewards import FishRewards
+from fish.helpers.user_state import add_unlocked_ids
 
 class BaseRewardHandler:
     def __init__(self, reward, ctx, token, streamelements):
@@ -15,6 +16,19 @@ class BaseRewardHandler:
         message = self.get_formatted_message(self.reward.rewardsJSON.get("base_message", ""))
         message += self.get_formatted_message(self.reward.chosenReward.get("message", ""))
         await self.ctx.send(message)
+
+        unlock_configs = {
+            "unlocks": self.ctx.author.name,
+            "global_unlocks": "global"
+        }
+        
+        reward_data = self.reward.chosenReward
+        for unlock_key, target_user in unlock_configs.items():
+            ids_to_unlock = reward_data.get(unlock_key)
+            if ids_to_unlock:
+                if add_unlocked_ids(self.ctx.channel.name, target_user, ids_to_unlock):
+                    unlock_msg = self.get_formatted_message(reward_data.get("unlock_message", ""))
+                    await self.ctx.send(unlock_msg)               
 
     
     def get_formatted_message(self, msg: str) -> str:
@@ -191,7 +205,12 @@ class DupeRewardHandler(BaseRewardHandler):
         amount = self.reward.chosenReward.get("amount", 2)
         for i in range(1, amount + 1):
             rewardsFilePath = Utils.get_fish_rewards_file_path(self.ctx)
-            reward = FishRewards(chatterRole="sub" if self.ctx.author.is_subscriber else "unsub", rewardsFilePath=rewardsFilePath)
+            reward = FishRewards(
+                chatterRole="sub" if self.ctx.author.is_subscriber else "unsub", 
+                rewardsFilePath=rewardsFilePath, 
+                username=self.ctx.author.name, 
+                channel_name=self.ctx.channel.name
+            )
             reward.chosenReward = reward.choose_default_reward()
             await asyncio.sleep(delay)
             await handle_reward(reward, self.ctx, self.token, self.streamelements)

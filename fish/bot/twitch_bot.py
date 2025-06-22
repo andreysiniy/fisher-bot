@@ -37,7 +37,9 @@ class TwitchBot(commands.Bot):
         print(f"Rewards file path: {rewardsFilePath}")
         reward = FishRewards(
             chatterRole="sub" if ctx.author.is_subscriber else "unsub", 
-            rewardsFilePath=rewardsFilePath
+            rewardsFilePath=rewardsFilePath,
+            username=ctx.author.name,
+            channel_name=ctx.channel.name
         )
         if (reward.chatterRole == "sub"):
             cooldown = reward.rewardsJSON.get("sub_cooldown", 1000)
@@ -57,7 +59,7 @@ class TwitchBot(commands.Bot):
     @commands.cooldown(rate=1, per=10, bucket=commands.Bucket.member)
     async def fishrewards(self, ctx: commands.Context):
         rewardsFilePath = Utils.get_fish_rewards_file_path(ctx)
-        reward = FishRewards(chatterRole="sub" if ctx.author.is_subscriber else "unsub", rewardsFilePath=rewardsFilePath)
+        reward = FishRewards(chatterRole="sub" if ctx.author.is_subscriber else "unsub", rewardsFilePath=rewardsFilePath, username=ctx.author.name, channel_name=ctx.channel.name)
         messages = []
         messages = Utils.generate_reward_strings(reward.get_probabilities())
         message = ""
