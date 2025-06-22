@@ -12,55 +12,60 @@ class BaseRewardHandler:
         self.streamelements = streamelements
 
     async def handle(self):
-        raise NotImplementedError("Handle method must be implemented by subclasses.")
+        message = self.get_formatted_message(self.reward.rewardsJSON.get("base_message", ""))
+        message += self.get_formatted_message(self.reward.chosenReward.get("message", ""))
+        await self.ctx.send(message)
+
+    
+    def get_formatted_message(self, msg: str) -> str:
+        format_map = {
+            'username': self.ctx.author.name,
+            'value': Utils.format_large_number(self.reward.chosenReward.get("value", 0)),
+            'amount': self.reward.chosenReward.get("amount", 0),
+            'time': Utils.format_time(self.reward.chosenReward.get("seconds", 0)),
+            'bullets': self.reward.chosenReward.get("bullets", 0),
+            'chambers': self.reward.chosenReward.get("chambers", 0),
+            'percentage': Utils.format_percent(self.reward.chosenReward.get("percentage", 0)),
+            'delay': self.reward.chosenReward.get("delay", 0)
+        }
+        message = msg.format_map(format_map)
+        return message
+                                              
+
 
 # ---- Reward Handlers ----
 
 class PointsRewardHandler(BaseRewardHandler):
     async def handle(self):
-        message = ["", ""]    
-        message[0] = self.reward.rewardsJSON["base_message"].format(username = self.ctx.author.name)
-        valueMsg = Utils.format_large_number(self.reward.chosenReward["value"])
-        message[0] += self.reward.chosenReward["message"].format(username = self.ctx.author.name, value = valueMsg)
+        await super().handle()
+        message = ""
         channel_id = await self.streamelements.get_channel_id(self.ctx.channel.name) 
         response = await self.streamelements.add_user_points(user=self.ctx.author.name, channel_id=channel_id, points=self.reward.chosenReward["value"])
-        await self.ctx.send(message[0])
-        message[1] = f"Set {self.ctx.author.name} points to: {Utils.format_large_number(response['newAmount'])} ({Utils.format_large_number_sign(response['amount'])})"
-        await self.ctx.send(message[1])
+        message = f"Set {self.ctx.author.name} points to: {Utils.format_large_number(response['newAmount'])} ({Utils.format_large_number_sign(response['amount'])})"
+        await self.ctx.send(message)
 
 class TimeoutRewardHandler(BaseRewardHandler):
     async def handle(self):
-        message = ["", ""]    
-        message[0] = self.reward.rewardsJSON["base_message"].format(username = self.ctx.author.name)
-        timeMsg = Utils.format_time(self.reward.chosenReward["seconds"])
-        message[0] += self.reward.chosenReward["message"].format(username = self.ctx.author.name, time = timeMsg)
+        await super().handle()
+        message = ""    
         user = await self.ctx.channel.user()
-        message[1] = f"User {self.ctx.author.name} was timed out for {timeMsg}!"
+        message = f"User {self.ctx.author.name} was timed out for {Utils.format_time(self.reward.chosenReward.get('seconds', 0))}!"
         await user.timeout_user(token=self.token, moderator_id=self.ctx.bot.user_id, user_id=self.ctx.author.id, duration=self.reward.chosenReward["seconds"], reason=f"Nice catch!! {self.reward.chosenReward['seconds']} seconds timeout!!")
-        await self.ctx.send(message[0])
-        await self.ctx.send(message[1])
+        await self.ctx.send(message)
 
 class VipRewardHandler(BaseRewardHandler):
     async def handle(self):
-        message = ""
-        message = self.reward.rewardsJSON["base_message"].format(username = self.ctx.author.name)
-        message += self.reward.chosenReward["message"].format(username = self.ctx.author.name)
-        await self.ctx.send(message)
+        await super().handle()
 
 class PercentagePointsRewardHandler(BaseRewardHandler):
     async def handle(self):
-        message = ["", ""]
-        message[0] = self.reward.rewardsJSON["base_message"].format(username = self.ctx.author.name)
-        percentageMsg = Utils.format_percent(self.reward.chosenReward["percentage"])
-        message[0] += self.reward.chosenReward["message"].format(username = self.ctx.author.name, percentage = percentageMsg)
+        await super().handle()
         channel_id = await self.streamelements.get_channel_id(self.ctx.channel.name) 
         userpoints = await self.streamelements.get_user_points(user=self.ctx.author.name, channel_id=channel_id)
         points_to_add = int(userpoints * self.reward.chosenReward["percentage"])
         response = await self.streamelements.add_user_points(user=self.ctx.author.name, channel_id=channel_id, points=points_to_add)
-        await self.ctx.send(message[0])
-        
-        message[1] = f"Set {self.ctx.author.name} points to: {Utils.format_large_number(response['newAmount'])} ({Utils.format_large_number_sign(response['amount'])})"
-        await self.ctx.send(message[1])
+        message = f"Set {self.ctx.author.name} points to: {Utils.format_large_number(response['newAmount'])} ({Utils.format_large_number_sign(response['amount'])})"
+        await self.ctx.send(message)
 
 class RussianRouletteRewardHandler(BaseRewardHandler):
     def was_shot(self, bullets: int, chambers: int) -> bool:
@@ -106,18 +111,16 @@ class RussianRouletteRewardHandler(BaseRewardHandler):
             "points": self.handle_points,
             "nothing": self.handle_nothing
         }
-        message = ["", ""]
+        message = ""
         chambers = self.reward.chosenReward["chambers"]
         bullets = self.reward.chosenReward["bullets"]
-        message[0] = self.reward.rewardsJSON["base_message"].format(username = self.ctx.author.name)
-        message[0] += self.reward.chosenReward["message"].format(username = self.ctx.author.name, chambers = chambers, bullets = bullets)
-        await self.ctx.send(message[0])
+        await super().handle()
         await asyncio.sleep(4)
         if self.was_shot(bullets, chambers):
             await shot_penalty_mapping[self.reward.chosenReward.get("penalty_type")]()
         else:
-            message[1] = self.reward.chosenReward["safe_message"].format(username = self.ctx.author.name)
-            await self.ctx.send(message[1])
+            message = self.reward.chosenReward["safe_message"].format(username = self.ctx.author.name)
+            await self.ctx.send(message)
 
 class RobberyRewardHandler(BaseRewardHandler):
     def get_robbed_user_rank(self, rank: int, rank_range: int) -> int:
@@ -164,11 +167,7 @@ class RobberyRewardHandler(BaseRewardHandler):
 
 
     async def handle(self):
-        message = ["", ""]
-        message[0] = self.reward.rewardsJSON["base_message"].format(username = self.ctx.author.name)
-        message[0] += self.reward.chosenReward["message"].format(username = self.ctx.author.name)
-        
-        await self.ctx.send(message[0])
+        await super().handle()
        
         channel_id = await self.streamelements.get_channel_id(self.ctx.channel.name)
         rank = await self.streamelements.get_user_rank(user=self.ctx.author.name, channel_id=channel_id)
@@ -187,10 +186,7 @@ class RobberyRewardHandler(BaseRewardHandler):
         
 class DupeRewardHandler(BaseRewardHandler):
     async def handle(self):
-        message = ["", ""]
-        message[0] = self.reward.rewardsJSON["base_message"].format(username = self.ctx.author.name)
-        message[0] += self.reward.chosenReward["message"].format(username = self.ctx.author.name)
-        await self.ctx.send(message[0])
+        await super().handle()
         delay = self.reward.chosenReward.get("delay", 3)
         amount = self.reward.chosenReward.get("amount", 2)
         for i in range(1, amount + 1):
@@ -204,18 +200,14 @@ class DupeRewardHandler(BaseRewardHandler):
 
 class CustomRewardHandler(BaseRewardHandler):
     async def handle(self):
-        message = ["", ""]
-        message[0] = self.reward.rewardsJSON["base_message"].format(username = self.ctx.author.name)
-        message[0] += self.reward.chosenReward["message"].format(username = self.ctx.author.name)
-        message[1] = self.reward.chosenReward["cmd"].format(username = self.ctx.author.name)
-        await self.ctx.send(message[0])
-        await self.ctx.send(message[1])
+        await super().handle()
+        message = ""
+        message = self.reward.chosenReward["cmd"].format(username = self.ctx.author.name)
+        await self.ctx.send(message)
 
 class NothingRewardHandler(BaseRewardHandler):
     async def handle(self):
-        message = self.reward.rewardsJSON["base_message"].format(username = self.ctx.author.name)
-        message += self.reward.chosenReward["message"].format(username = self.ctx.author.name)
-        await self.ctx.send(message)
+        await super().handle()
 
 # ---- Reward Handler Mapping ----
 
