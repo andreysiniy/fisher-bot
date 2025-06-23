@@ -99,24 +99,12 @@
                 "message": "whats up fuckers i suggest you lock in! wingo"
             },
             {
-                "weight": 800,
-                "message": "HOLY BOOBA YOU FISHED UP AN ANIME girl!? FREE VTUBER TIME pogs -> sunowi"
-            },
-            {
                 "weight": 1550,
                 "message": "you fished a fishing rod fishing a fishing rod fishing absolutely fucking nothing."
             },
             {
                 "weight": 2050,
                 "message": "YOU RN --> waitingforfish"
-            },
-            {
-                "weight": 100,
-                "message": "THIS IS IT THIS IS A SIGN, ITS TIME FOR YOU TO GO OPEN A COUNTER STRIKE CASE MY MAN. YOU PULLING THIS IS SO FUCKIGN RARE THE STARS ARE FUCKING ALLIGNED BROTHER THIS IS THE MOMENT YOU'VE BEEN WAITING FOR. GOLD GOLD GOLD"
-            },
-            {
-                "weight": 100,
-                "message": "jigsaw 🃏 FOR YOUR FINAL CHALLENGE @{username}: TWO CHOICES, GAMBLE ALL OR LOSE IT ALL🃏 jigsaw"
             }
         ],
         "points": [
@@ -352,6 +340,23 @@
                 "robbery_message": "{victim} got robbed by {username} for {percentage} points!",
                 "percentage": 0.1,
                 "range": 7
+            }
+        ],
+        "misc": [
+            {
+                "title": "Jigsaw",
+                "weight": 100,
+                "message": "jigsaw 🃏 FOR YOUR FINAL CHALLENGE @{username} TWO CHOICES, GAMBLE ALL OR LOSE IT ALL🃏 jigsaw"
+            },
+            {
+                "title": "VTUBER TIME",
+                "weight": 800,
+                "message": "HOLY BOOBA YOU FISHED UP AN ANIME girl!? FREE VTUBER TIME pogs -> sunowi"
+            },
+            {
+                "title": "GOLD GOLD GOLD",
+                "weight": 100,
+                "message": "THIS IS IT THIS IS A SIGN, ITS TIME FOR YOU TO GO OPEN A COUNTER STRIKE CASE MY MAN. YOU PULLING THIS IS SO FUCKIGN RARE THE STARS ARE FUCKING ALLIGNED BROTHER THIS IS THE MOMENT YOU'VE BEEN WAITING FOR. GOLD GOLD GOLD"
             }
         ]
     }
