@@ -106,7 +106,7 @@ def generate_reward_strings(reward_probabilities):
 
     for category_name, items in reward_probabilities.items():
         for item in items:
-            formatter = reward_formatters.get(category_name, lambda item: f"Custom Reward: {format_percent(item['probability'])}")
+            formatter = reward_formatters.get(category_name, lambda item: f"{item.get('title', 'Custom reward')}: {format_percent(item['probability'])}")
             reward_string = formatter(item)
             reward_strings.append(reward_string)
 

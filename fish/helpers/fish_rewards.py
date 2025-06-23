@@ -104,6 +104,9 @@ class FishRewards:
                     item_data["penalty_type"] = item["penalty_type"]
                 if "amount" in item:
                     item_data["amount"] = item["amount"]
+                if "title" in item:
+                    item_data["title"] = item["title"]
+
                 reward_probabilities[category_name].append(item_data)
         return reward_probabilities
        
