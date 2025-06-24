@@ -155,12 +155,12 @@ You can create "locked" rewards that only become available after a specific trig
     *   `global_unlocks`: Unlocks the reward for *everyone* in the channel.
     *   `unlocks`: Unlocks the reward only for the user who fished it up.
 
-    ```json
+    ```jsonc
     "nothing": [
        {
             "weight": 100,
             "message": "OH YOU FISHED UP A FLOATING BOTTLE! ...",
-            "global_unlocks": ["note_2"], // This unlocks the reward with id "note_2"
+            "global_unlocks": ["note_2"], // This unlocks the reward with id "note_2", for unlocking multiple rewards, separate ids with comma.
             "unlock_message": "{username} as you reel in your line, a strange sigil glows..."
         }
     ]
