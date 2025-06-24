@@ -117,7 +117,24 @@ Rewards are defined in a dictionary where the key is the reward `type`.
 | `nothing`           | The user gets nothing.                                     | `weight`, `message`                                                                                                                                                        |
 | *Custom*            | Any other key will be treated as a custom reward.          | `weight`, `message`, `cmd` (A string with placeholders like `{username}` that will be sent as a chat message)                                                               |
 
-### 4. Reward Unlocks (Persistent State)
+### 4. Message Placeholders
+
+When defining messages for your rewards (e.g., in `message`, `shot_message`, `robbery_message`, etc.), you can use several placeholders that the bot will automatically replace with dynamic values.
+
+| Placeholder      | Description                                                    | Example Usage (Reward Type)                       |
+| ---------------- | -------------------------------------------------------------- | ------------------------------------------------- |
+| `{username}`     | The name of the user who fished.                               | All                                               |
+| `{value}`        | The number of points, formatted (e.g., 1.5K, 10M).             | `points`, `russian_roulette`, `robbery`           |
+| `{time}`         | The duration, formatted (e.g., 5m 30s).                        | `timeout`, `russian_roulette`                     |
+| `{percentage}`   | The percentage, formatted (e.g., 10.5%).                       | `percentage_points`, `russian_roulette`, `robbery`|
+| `{amount}`       | The number of times to duplicate a fish.                       | `dupe`                                            |
+| `{delay}`        | The delay in seconds between duplicated fishes.                | `dupe`                                            |
+| `{bullets}`      | The number of bullets in the chamber.                          | `russian_roulette`                                |
+| `{chambers}`     | The total number of chambers in the revolver.                  | `russian_roulette`                                |
+| `{victim}`       | The name of the user being robbed. **Only in `robbery_message`** | `robbery`                                         |
+
+
+### 5. Reward Unlocks (Persistent State)
 
 You can create "locked" rewards that only become available after a specific trigger. This is useful for creating scavenger hunts or rare, evolving rewards.
 
