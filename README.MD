@@ -185,7 +185,7 @@ You can create "locked" rewards that only become available after a specific trig
 
 1.  **Clone the repository:**
     ```bash
-    git clone <repository-url>
+    git clone https://github.com/andreysiniy/fisher-bot.git
     cd fisher-bot
     ```
 
