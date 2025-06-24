@@ -90,7 +90,7 @@ In this chain, `fishRewards.json` will contain all rewards from `fishRewards_vip
 ```
 
 **Example: `rewards/example/fishRewards_vip.json`**
-```json
+```jsonc
 {
     "extends": "fishRewards_mod.json",
     "rewards": {
