@@ -1,5 +1,8 @@
 
 from aiohttp import ClientSession
+from fish.helpers.logger import get_logger
+
+logger = get_logger("streamelements_log")
 
 class StreamElementsManager:
     def __init__(self, config):
@@ -79,10 +82,23 @@ class StreamElementsManager:
             async with session.put(url, headers=headers) as response:
                 if response.status == 200:
                     print(f"Added {points} points to user {user} on channel_id: {channel_id}")
-                    return await response.json()
+                    data = await response.json()
+                    logger.info(f"Added {points} to user {user} on channel_id: {channel_id}", extra={'response_data': data})
+                    return data
                 else:
-                    print(f"Failed to add points to user {user} on channel_id: {channel_id}: {response.status}")
-                    print(f"Response: {await response.text()}")
+                    error_text = await response.text()
+                    logger.error(
+                        f"Failed to add points for user '{user}'. "
+                        f"Request to {url} failed with status {response.status}.",
+                        extra={
+                            'user': user,
+                            'channel_id': channel_id,
+                            'status_code': response.status,
+                            'response_text': error_text
+                            }
+                        )
+                    print(f"Failed to add points to user {user} on channel_id: {channel_id}")
+                    print(f"Response: {error_text}")
                     response.raise_for_status()
 
     async def remove_user_points(self, user: str, channel_id: str, points: int):
@@ -102,11 +118,24 @@ class StreamElementsManager:
             }
             async with session.put(url, headers=headers) as response:
                 if response.status == 200:
+                    data = await response.json()
+                    logger.info(f"Removed {points} from user {user} on channel_id: {channel_id}", extra={'response_data': data})
                     print(f"Removed {points} points from user {user} on channel_id: {channel_id}")
-                    return await response.json()
+                    return data
                 else:
-                    print(f"Failed to remove points from user {user} on channel_id: {channel_id}: {response.status}")
-                    print(f"Response: {await response.text()}")
+                    error_text = await response.text()
+                    logger.error(
+                        f"Failed to add points for user '{user}'. "
+                        f"Request to {url} failed with status {response.status}.",
+                        extra={
+                            'user': user,
+                            'channel_id': channel_id,
+                            'status_code': response.status,
+                            'response_text': error_text
+                            }
+                        )
+                    print(f"Failed to remove points from user {user} on channel_id: {channel_id}")
+                    print(f"Response: {error_text}")
                     response.raise_for_status()
     
     async def get_user_rank(self, user: str, channel_id: str):
@@ -129,11 +158,23 @@ class StreamElementsManager:
             async with session.get(url, headers=headers) as response:
                 if response.status == 200:
                     data = await response.json()
+                    logger.info(f"User {user} rank is {data.get('rank', -1)} on channel_id: {channel_id}", extra={'response_data': data})
                     print(f"User: {user} has rank: {data.get('rank')} on channel_id: {channel_id}")
                     return data.get("rank")
                 else:
+                    error_text = await response.text()
+                    logger.error(
+                        f"Failed to add points for user '{user}'. "
+                        f"Request to {url} failed with status {response.status}.",
+                        extra={
+                            'user': user,
+                            'channel_id': channel_id,
+                            'status_code': response.status,
+                            'response_text': error_text
+                            }
+                        )
                     print(f"Failed to get rank for user {user} on channel_id: {channel_id}: {response.status}")
-                    print(f"Response: {await response.text()}")
+                    print(f"Response: {error_text}")
                     response.raise_for_status()
     
     async def get_username_by_rank(self, rank: int, channel_id: str):
@@ -159,11 +200,23 @@ class StreamElementsManager:
                     if "users" in data and len(data["users"]) > 0:
                         username = data["users"][0].get("username")
                         print(f"User with rank {rank} on channel_id: {channel_id} is {username}")
+                        logger.info(f"User with rank {rank} on channel {channel_id} is '{username}'.")
                         return username
                     else:
                         print(f"No user found for rank {rank} on channel_id: {channel_id}")
+                        logger.warning(f"No user found for rank {rank} on channel {channel_id}. The rank may be out of bounds.")
                         return ""
                 else:
+                    error_text = await response.text()
+                    logger.error(
+                        f"Failed to get user by rank. API returned status {response.status}.",
+                        extra={
+                            'rank': rank,
+                            'channel_id': channel_id,
+                            'status_code': response.status,
+                            'response_text': error_text
+                        }
+                    )
                     print(f"Failed to get user by rank {rank} on channel_id: {channel_id}: {response.status}")
-                    print(f"Response: {await response.text()}")
+                    print(f"Response: {error_text}")
                     response.raise_for_status()
