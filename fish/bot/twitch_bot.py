@@ -6,9 +6,6 @@ from datetime import datetime
 from fish.managers.streamelements_manager import StreamElementsManager
 import fish.managers.reward_manager as RewardHandler
 import fish.helpers.utils as Utils
-from fish.helpers.logger import get_logger
-
-logger = get_logger()
 
 class TwitchBot(commands.Bot):
     def __init__(self):
@@ -51,7 +48,6 @@ class TwitchBot(commands.Bot):
         print(f"{current_date} {ctx.author.name} fished! on {ctx.channel.name} channel")
         print(f"User {ctx.author.name} cooldown is {Utils.format_time(cooldown)}")
         await RewardHandler.handle_reward(reward, ctx, self.config.token, self.streamElements)
-        logger.info(f"{ctx.author.name} fished! on {ctx.channel.name} channel", extra={"user": ctx.author.name, "channel": ctx.channel.name, "reward": reward.chosenReward, "reward_path": rewardsFilePath})
         print(f"------ {ctx.author.name} finished fishing on {ctx.channel.name} channel! ------")
 
 

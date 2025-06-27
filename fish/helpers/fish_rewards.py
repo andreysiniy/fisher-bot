@@ -3,6 +3,9 @@ import json
 import random
 import copy
 from fish.helpers.user_state import get_user_state
+from fish.helpers.logger import get_logger
+
+logger = get_logger()
 
 def deep_merge(base, new):
     for key, new_value in new.items():
@@ -46,9 +49,11 @@ class FishRewards:
         self.rewardsFile = rewardsFilePath
         self.rewardsJSON = load_rewards_recursively(rewardsFilePath)
         self.chatterRole = chatterRole
+        self.channelName = channel_name
+        self.username = username
 
-        user_state = get_user_state(channel_name, username)
-        global_state = get_user_state(channel_name, "global")
+        user_state = get_user_state(self.channelName, self.username)
+        global_state = get_user_state(self.channelName, "global")
         unlocked_ids = set(user_state.get("unlocked_ids"))
         unlocked_ids.update(set(global_state.get("unlocked_ids")))
         filtered_base_rewards = {}
@@ -156,7 +161,7 @@ class FishRewards:
             if key in chosen_reward:
                 handler()
 
-
+        logger.info(f"{self.username} fished! on {self.channelName} channel", extra={"user": self.username, "channel": self.channelName, "reward": chosen_reward, "reward_path": self.rewardsFile})
         print(f"Chosen reward: {chosen_reward}")
         return chosen_reward
 
