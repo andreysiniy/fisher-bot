@@ -90,4 +90,9 @@ class TwitchBot(commands.Bot):
             cooldown = reward.rewardsJSON.get("sub_cooldown", 1000)
         else:
             cooldown = reward.rewardsJSON.get("base_cooldown", 1000)
-        await ctx.send(f"Fish cooldown for user {ctx.author.name} is {Utils.format_time(cooldown)}")
+        cooldown_left = Utils.get_command_cooldown(self._commands['fish'], ctx, cooldown)
+        if (cooldown_left == 0):
+            await ctx.send(f"Fish cooldown for user {ctx.author.name} is {Utils.format_time(cooldown)} (fishing is ready!)")
+        else:
+            await ctx.send(f"Fish cooldown for user {ctx.author.name} is {Utils.format_time(cooldown)} ({Utils.format_time(cooldown_left)} left)")
+        
