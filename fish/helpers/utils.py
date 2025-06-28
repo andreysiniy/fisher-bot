@@ -138,6 +138,8 @@ def set_command_cooldown(ctx, seconds: int):
 
 def get_command_cooldown(command, ctx, seconds: int):
     key_to_check = (ctx.author.name, ctx.author.id)
+    print(f"Checking cooldown for user: {key_to_check} with seconds: {seconds}")
+    print(f"Command cooldown cache: {command._cooldowns[0]._cache}")
     cooldown_expires = command._cooldowns[0]._cache.get(key_to_check, [0,0])[1] + seconds
     if not cooldown_expires:
         return 0  
