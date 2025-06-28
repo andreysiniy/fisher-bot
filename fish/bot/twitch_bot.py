@@ -85,7 +85,7 @@ class TwitchBot(commands.Bot):
     @commands.command()
     async def fishcooldown(self, ctx: commands.Context):
         rewards_path = Utils.get_fish_rewards_file_path(ctx)
-        reward = FishRewards(chatterRole="sub" if ctx.author.is_subscriber else "unsub", rewardsFilePath=rewards_path)
+        reward = FishRewards(chatterRole="sub" if ctx.author.is_subscriber else "unsub", rewardsFilePath=rewards_path, username=ctx.author.name, channel_name=ctx.channel.name)
         if reward.chatterRole == "sub":
             cooldown = reward.rewardsJSON.get("sub_cooldown", 1000)
         else:
