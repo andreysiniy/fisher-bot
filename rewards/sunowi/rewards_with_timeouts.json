@@ -1,5 +1,5 @@
 {
-    "extends": "rewards_base_no_timeouts.json",
+    "extends": "rewards_bottles.json",
     "rewards": {
         "timeout": [
             {
