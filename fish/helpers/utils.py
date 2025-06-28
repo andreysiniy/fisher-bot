@@ -129,7 +129,7 @@ def get_fish_rewards_file_path(ctx):
     
    
 def remove_user_cooldown(ctx):
-    key_to_delete = (ctx.author.name, ctx.author.id)
+    key_to_delete = (ctx.channel.name, ctx.author.id)
     del ctx.command._cooldowns[0]._cache[key_to_delete]
 
 
@@ -137,7 +137,7 @@ def set_command_cooldown(ctx, seconds: int):
     ctx.command._cooldowns[0]._per = seconds
 
 def get_command_cooldown(command, ctx, seconds: int):
-    key_to_check = (ctx.author.name, ctx.author.id)
+    key_to_check = (ctx.channel.name, ctx.author.id)
     print(f"Checking cooldown for user: {key_to_check} with seconds: {seconds}")
     print(f"Command cooldown cache: {command._cooldowns[0]._cache}")
     cooldown_expires = command._cooldowns[0]._cache.get(key_to_check, [0,0])[1] + seconds
