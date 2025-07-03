@@ -82,7 +82,7 @@ class TwitchBot(commands.Bot):
             await ctx.send(chunk_part)
            
     
-    @commands.command()
+    @commands.command(aliases=("fishcd",))
     async def fishcooldown(self, ctx: commands.Context):
         rewards_path = Utils.get_fish_rewards_file_path(ctx)
         reward = FishRewards(chatterRole="sub" if ctx.author.is_subscriber else "unsub", rewardsFilePath=rewards_path, username=ctx.author.name, channel_name=ctx.channel.name)
