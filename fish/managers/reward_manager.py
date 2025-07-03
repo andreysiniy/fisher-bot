@@ -189,6 +189,10 @@ class RobberyRewardHandler(BaseRewardHandler):
         robbed_user_rank = self.get_robbed_user_rank(rank=rank, rank_range=rank_range)
         robbed_user = await self.streamelements.get_username_by_rank(rank=robbed_user_rank, channel_id=channel_id)
 
+        if not robbed_user:
+            await self.ctx.send(f"{self.ctx.author.name} everyone around you is too poor to rob! Unlucky!")
+            return
+
         robbery_type_mapping = {
             "percentage": lambda: self.handle_percentage_robbery(channel_id=channel_id, robbed_user=robbed_user),
             "value": lambda: self.handle_points_robbery(channel_id=channel_id, robbed_user=robbed_user)
