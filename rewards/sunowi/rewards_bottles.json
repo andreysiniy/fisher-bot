@@ -10,7 +10,7 @@
             },
             {
                 "id": "note_2",
-                "weight": 600,
+                "weight": 1200,
                 "locked": true,
                 "global_unlocks": ["note_3"],
                 "message": "OH @{username} YOU FISHED UP A FLOATING BOTTLE! \nINSIDE IT THERE IS A RIPPED NOTE 📜 \nIT IS MARKED WITH THE NUMERAL \" II \" AND IT READS: \n \"𝔫𝔬 𝔴𝔞𝔦𝔱, 𝔱𝔥𝔞𝔱 𝔰𝔢𝔢𝔪𝔰 𝔱𝔬 𝔟𝔢 𝔦𝔫𝔠𝔬𝔯𝔯𝔢𝔠𝔱 𝔱𝔥𝔢 𝔩𝔢𝔱𝔱𝔢𝔯𝔰 𝔞𝔯𝔢 𝔰𝔠𝔯𝔞𝔪𝔟𝔩𝔢𝔡! 𝔱𝔥𝔞𝔱 𝔰𝔥𝔬𝔲𝔩𝔡 𝔡𝔬 𝔦𝔱 ... 𝒾𝒹 / 𝐸𝟤𝓋 ...\"",
@@ -18,7 +18,7 @@
             },           
             {
                 "id": "note_3",
-                "weight": 600,
+                "weight": 1200,
                 "locked": true,
                 "message": "OH @{username} YOU FISHED UP A FLOATING BOTTLE! \nINSIDE IT THERE IS A RIPPED NOTE 📜 \nIT IS MARKED WITH THE NUMERAL \" III \" AND IT READS: \n \"𝔬𝓴𝔞𝔂 𝔱𝔥𝔢 𝔣𝔦𝔫𝔞𝔩 𝔩𝔢𝔱𝔱𝔢𝔯𝔰, 𝔪𝔞𝔶𝔟𝔢 𝔱𝔥𝔦𝔰 𝔴𝔦𝔩𝔩 𝔩𝔢𝔞𝔡 𝔱𝔬 𝔰𝔬𝔪𝔢𝔱𝔥𝔦𝔫𝔤! W𝒷Y𝒷G𝒻H\""
             }

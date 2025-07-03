@@ -262,7 +262,7 @@
             },
             {
                 "unlocks": ["dupe_3"],
-                "unlock_message": "THE HEAT IS ON, @{username} YOUR LITTLE \"HEIST\" DIDN'T GO UNNOTICED! BIGGER SCORES AND BIGGER RISKS ARE NOW ON THE TABLE!",
+                "unlock_message": "THE HEAT IS ON, @{username} YOUR LITTLE \"HEIST\" DIDN'T GO UNNOTICED! DR. OSC HAS A NEW DEAL ON THE TABLE, BUT THE RISKS ARE BIGGER... EXPECT MULTIPLIED FISHES... ONE DAY...",
                 "percentage": 0.5,
                 "weight": 1050,
                 "message": "INSTEAD OF FISHING I GUESS YOU ROBBED A FUCKING BANK! CINEMA +{percentage}🧊"
