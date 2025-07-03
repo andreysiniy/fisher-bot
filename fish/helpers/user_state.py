@@ -1,5 +1,6 @@
 import os
 import json
+import fish.helpers.log_checker as LogChecker
 from pathlib import Path
 
 STATE_DIR_TEMPLATE = "rewards/{channel_name}/user_states"
@@ -37,3 +38,27 @@ def add_unlocked_ids(channel_name: str, username: str, ids_to_unlock: list) -> b
         print(f"State for {username} on channel {channel_name} updated with IDs: {ids_to_unlock}")
         return True
     return False
+
+def add_fish_stats(channel_name: str, username: str, stats: dict):
+    state = get_user_state(channel_name, username)
+    if "fish_stats" not in state:
+        state["fish_stats"] = {}
+    
+    state["fish_stats"].update(stats)
+    
+    save_user_state(channel_name, username, state)
+    print(f"Fish stats for {username} on channel {channel_name} updated with: {stats}")
+
+def add_fish_stats_from_logs(channel_name: str, start_date: str, log_files: list):
+    temp_stats = LogChecker.read_fish_log_files(log_files, start_date)
+    if not temp_stats:
+        print("No valid log data found.")
+        return
+    
+    channel_stats = temp_stats.get(channel_name, {})
+    if not channel_stats:
+        print(f"No stats found for channel {channel_name}.")
+        return
+    
+    for username, user_stats in  channel_stats.items():
+        add_fish_stats(channel_name, username, user_stats)
