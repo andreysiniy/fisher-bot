@@ -129,7 +129,7 @@ class RussianRouletteRewardHandler(BaseRewardHandler):
         chambers = self.reward.chosenReward["chambers"]
         bullets = self.reward.chosenReward["bullets"]
         await super().handle()
-        await asyncio.sleep(4)
+        await asyncio.sleep(self.reward.chosenReward.get("delay", 4))
         if self.was_shot(bullets, chambers):
             await shot_penalty_mapping[self.reward.chosenReward.get("penalty_type")]()
         else:
