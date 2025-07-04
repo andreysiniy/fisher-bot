@@ -50,7 +50,7 @@ def add_fish_stats(channel_name: str, username: str, stats: dict):
     print(f"Fish stats for {username} on channel {channel_name} updated with: {stats}")
 
 def add_fish_stats_from_logs(channel_name: str, start_date: str, log_files: list):
-    temp_stats = LogChecker.read_fish_log_files(log_files, start_date)
+    temp_stats = LogChecker.generate_fish_stats_report(log_files, start_date)
     if not temp_stats:
         print("No valid log data found.")
         return

@@ -1,7 +1,7 @@
 import json
 from collections import defaultdict, OrderedDict
 from datetime import datetime, timedelta, timezone
-
+from typing import List, Dict, Any, Optional, Generator
 
 
 LOG_FILE_TEMPLATE =  "logs/{log_name}"
@@ -85,28 +85,39 @@ def format_stats_output(stats_data):
         formatted_output[channel] = channel_dict
     return formatted_output
 
-def read_fish_log_files(file_names : list, start_date: str = None):
-    log_data_list = []
+
+def _stream_log_entries(file_path: str) -> Generator[Dict[str, Any], None, None]:
+    try:
+        with open(file_path, 'r', encoding='utf-8') as f:
+            for i, line in enumerate(f, 1):
+                if not line.strip():
+                    continue
+                try:
+                    log_entry = json.loads(line)
+                    timestamp_str = log_entry.get("timestamp")
+                    if timestamp_str:
+                        log_entry["timestamp"] = parse_timestamp(timestamp_str)
+                        yield log_entry
+                except json.JSONDecodeError:
+                    print(f"Skipping malformed JSON on line {i} in {file_path}")
+    except FileNotFoundError:
+        print(f"Log file not found: {file_path}")
+    except Exception as e:
+        print(f"An unexpected error occurred reading {file_path}: {e}")
+
+def get_all_log_data(file_names: List[str], start_date: Optional[str] = None) -> Generator[Dict[str, Any], None, None]:
+    start_datetime = parse_timestamp(start_date) if start_date else None
+
     for file_name in file_names:
         log_file_path = LOG_FILE_TEMPLATE.format(log_name=file_name)
-        try:
-            with open(log_file_path, 'r', encoding='utf-8') as f:
-                for line in f:
-                    if line.strip(): 
-                        try:
-                            log_data = json.loads(line.strip())
-                            timestamp_str = log_data.get("timestamp")
-                            if timestamp_str:
-                                log_data["timestamp"] = parse_timestamp(timestamp_str)
-                                if start_date:
-                                    if log_data["timestamp"] < parse_timestamp(start_date):
-                                        continue
-                                log_data_list.append(log_data)
-                        except json.JSONDecodeError as e:
-                            print(f"JSON decode error in file {log_file_path}: {e}")
-        except FileNotFoundError as e:
-            print(f"Log file not found: {log_file_path} - {e}")
-    recent_stats_raw = calculate_stats_from_fish_log_data(log_data_list)
-    formatted_stats = format_stats_output(recent_stats_raw)
-    return formatted_stats
+        for entry in _stream_log_entries(log_file_path):
+            if start_datetime and entry["timestamp"] < start_datetime:
+                continue
+            yield entry
 
+def generate_fish_stats_report(file_names: List[str], start_date: Optional[str] = None) -> str:
+    all_entries_stream = get_all_log_data(file_names, start_date)
+    raw_stats = calculate_stats_from_fish_log_data(all_entries_stream)
+    formatted_report = format_stats_output(raw_stats)
+
+    return formatted_report
