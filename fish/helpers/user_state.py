@@ -62,3 +62,33 @@ def add_fish_stats_from_logs(channel_name: str, start_date: str, log_files: list
     
     for username, user_stats in  channel_stats.items():
         add_fish_stats(channel_name, username, user_stats)
+
+def add_se_stats(channel_name: str, username: str, stats: dict):
+    state = get_user_state(channel_name, username)
+    if "se_stats" not in state:
+        state["se_stats"] = {}
+    
+    state["se_stats"].update(stats)
+    
+    save_user_state(channel_name, username, state)
+    print(f"SE stats for {username} on channel {channel_name} updated with: {stats}")
+
+async def add_se_stats_from_logs(channel_name: str, start_date: str, log_files: list, se_manager = None):
+    if not se_manager:
+        print("SE Manager is not provided.")
+        return
+    
+    temp_stats = LogChecker.generate_se_stats_report(log_files, start_date)
+    if not temp_stats:
+        print("No valid log data found.")
+        return
+    
+    se_channel_id = await se_manager.get_channel_id(channel_name)
+
+    channel_stats = temp_stats.get(se_channel_id, {})
+    if not channel_stats:
+        print(f"No stats found for channel {channel_name}.")
+        return
+    
+    for username, user_stats in  channel_stats.items():
+        add_se_stats(channel_name, username, user_stats)

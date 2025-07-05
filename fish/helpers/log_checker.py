@@ -64,6 +64,23 @@ def calculate_stats_from_fish_log_data(log_data_list):
         stats[channel][user]["total"] += 1
     return stats
 
+def calculate_se_stats_from_fish_log_data(log_data_list):
+    stats = defaultdict(lambda: defaultdict(lambda: defaultdict(int)))
+    for data in log_data_list:
+        response_data = data.get("response_data", {})
+        channel = response_data.get("channel")
+        username = response_data.get("username")
+        amount = response_data.get("amount", 0)
+        if amount > 0:
+            stats[channel][username]["gained_points"] += amount
+            stats[channel][username]["biggest_fish_income"] = max(stats[channel][username]["biggest_fish_income"], amount)
+        if amount < 0:
+            stats[channel][username]["lost_points"] += abs(amount)
+            stats[channel][username]["biggest_fish_loss"] = max(stats[channel][username]["biggest_fish_loss"], abs(amount))
+        stats[channel][username]["fishing_income"] += amount
+    
+    return stats
+
 def format_stats_output(stats_data):
     formatted_output = OrderedDict() 
     for channel, users in stats_data.items():
@@ -121,3 +138,9 @@ def generate_fish_stats_report(file_names: List[str], start_date: Optional[str] 
     formatted_report = format_stats_output(raw_stats)
 
     return formatted_report
+
+def generate_se_stats_report(file_names: List[str], start_date: Optional[str] = None) -> str:
+    all_entries_stream = get_all_log_data(file_names, start_date)
+    raw_stats = calculate_se_stats_from_fish_log_data(all_entries_stream)
+
+    return raw_stats
