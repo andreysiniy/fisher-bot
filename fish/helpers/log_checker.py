@@ -87,7 +87,7 @@ def format_stats_output(stats_data):
         
         sorted_users = sorted(users.items(), key=lambda item: item[1].get("total", 0), reverse=True)
         
-        channel_dict = OrderedDict() # 
+        channel_dict = OrderedDict()  
         for user, counts in sorted_users:
             sorted_counts = OrderedDict()
             
