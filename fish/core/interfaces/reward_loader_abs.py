@@ -8,7 +8,7 @@ class RewardLoaderAbstract(Protocol):
     """
 
     @abstractmethod
-    async def load_rewards(self, username: str, channel_name: str) -> list[dict]:
+    def load_rewards(self, username: str, channel_name: str) -> list[dict]:
         """
         Load rewards from the source.
 
