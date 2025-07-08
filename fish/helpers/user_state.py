@@ -13,6 +13,17 @@ def get_user_state(channel_name: str, username: str) -> dict:
     
     with open(state_path, 'r', encoding='utf-8') as f:
         return json.load(f)
+    
+def get_user_states(channel_name: str) -> dict:
+    state_dir = STATE_DIR_TEMPLATE.format(channel_name=channel_name)
+    if not os.path.exists(state_dir):
+        return {}
+
+    user_states = {}
+    for state_file in Path(state_dir).glob("*.json"):
+        with open(state_file, 'r', encoding='utf-8') as f:
+            user_states[state_file.stem] = json.load(f)
+    return user_states
 
 def save_user_state(channel_name: str, username: str, state: dict):
     state_dir = STATE_DIR_TEMPLATE.format(channel_name=channel_name)
