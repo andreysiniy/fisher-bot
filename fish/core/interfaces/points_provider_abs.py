@@ -1,7 +1,7 @@
 from abc import abstractmethod
 from typing import Protocol
 
-class SEProviderAbstract(Protocol):
+class PointsProviderAbstract(Protocol):
 
     @abstractmethod
     async def get_channel_id(self, name: str) -> str:
