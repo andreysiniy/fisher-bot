@@ -58,7 +58,6 @@ def get_fish_rewards_file_path(channel_name: str, user_role: str) -> str:
     
 
 class RewardLoader(RewardLoaderAbstract):
-    
 
     def load_rewards(self, channel_name: str, user_role: str) -> list[dict]:
         rewards_file_path = get_fish_rewards_file_path(channel_name, user_role)
