@@ -1,7 +1,7 @@
 from abc import abstractmethod
 from typing import Protocol
 
-class TwitchActionsProvider(Protocol):
+class TwitchActionsProviderAbstract(Protocol):
     """
     Interface for providing Twitch actions.
     """

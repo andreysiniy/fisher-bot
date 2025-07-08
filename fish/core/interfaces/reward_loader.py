@@ -2,7 +2,7 @@ from abc import abstractmethod
 from typing import Protocol
 
 
-class RewardLoader(Protocol):
+class RewardLoaderAbstract(Protocol):
     """
     Interface for loading rewards from a source.
     """

@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 from typing import Protocol
 from ..entities import PlayerProfile
 
-class PlayerProfileRepository(Protocol):
+class PlayerProfileRepositoryAbstract(Protocol):
 
     @abstractmethod
     async def get_or_create_profile(self, user_id: str) -> PlayerProfile:
