@@ -8,13 +8,13 @@ class RewardLoaderAbstract(Protocol):
     """
 
     @abstractmethod
-    def load_rewards(self, username: str, channel_name: str) -> list[dict]:
+    def load_rewards(self, channel_name: str, user_role: str) -> list[dict]:
         """
         Load rewards from the source.
 
         Args:
-            username (str): The username of the user.
             channel_name (str): The name of the channel.
+            user_role (str): The role of the user (e.g., "vip", "mod", "base").
 
         Returns:
             list[dict]: A list of rewards, where each reward is represented as a dictionary.
