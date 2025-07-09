@@ -5,7 +5,7 @@ from ..entities import PlayerProfile
 class PlayerProfileRepositoryAbstract(Protocol):
 
     @abstractmethod
-    async def get_or_create_profile(self, user_id: str) -> PlayerProfile:
+    async def get_or_create_profile(self, user_id: str, username: str, channel_name: str) -> PlayerProfile:
         """
         Retrieve or create player profile for a given user ID.
 
