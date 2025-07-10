@@ -5,12 +5,14 @@ from ..entities import PlayerProfile
 class PlayerProfileRepositoryAbstract(Protocol):
 
     @abstractmethod
-    async def get_or_create_profile(self, user_id: str, username: str, channel_name: str) -> PlayerProfile:
+    async def get_or_create_profile(self, user_id: str, username: str, channel_info: dict) -> PlayerProfile:
         """
         Retrieve or create player profile for a given user ID.
 
         Args:
             user_id (str): The ID of the user.
+            username (str): The username of the user.
+            channel_info (dict): Information about the channel, including channel ID, SE ID and name.
 
         Returns:
             PlayerProfile: The player profile if found, otherwise a new profile.
