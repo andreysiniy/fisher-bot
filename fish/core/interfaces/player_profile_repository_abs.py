@@ -40,16 +40,6 @@ class PlayerProfileRepositoryAbstract(Protocol):
         """
         pass
 
-    @abstractmethod
-    async def create_profile(self, user_id: str, profile: PlayerProfile) -> None:
-        """
-        Create a new player profile for a given user ID.
-
-        Args:
-            user_id (str): The ID of the user.
-            profile (PlayerProfile): The player profile to create.
-        """
-        pass
 
     @abstractmethod
     async def get_top_by_points_income(self, channel_id: str, limit: int = 10) -> list[PlayerProfile]:
