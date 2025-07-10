@@ -31,7 +31,7 @@ class PointsProviderAbstract(Protocol):
         pass
 
     @abstractmethod
-    async def add_user_points(self, user: str, channel_id: str, points: int) -> None:
+    async def add_user_points(self, user: str, channel_id: str, points: int):
         """
         Add points to a user's account in a specific channel.
         
@@ -43,7 +43,7 @@ class PointsProviderAbstract(Protocol):
         pass
 
     @abstractmethod
-    async def remove_user_points(self, user: str, channel_id: str, points: int) -> None:
+    async def remove_user_points(self, user: str, channel_id: str, points: int):
         """
         Remove points from a user's account in a specific channel.
         
