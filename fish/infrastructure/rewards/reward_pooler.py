@@ -4,7 +4,7 @@ import copy
 
 class RewardPooler(RewardPoolerAbstract):
 
-    def get_random_reward(self, rewards: list[dict]) -> dict:
+    def get_random_reward(self, rewards: dict) -> dict:
         if not rewards:
             return {}
         base_rewards_copy = copy.deepcopy(rewards)

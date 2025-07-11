@@ -7,12 +7,12 @@ class RewardPoolerAbstract(Protocol):
     """
 
     @abstractmethod
-    def get_random_reward(self, rewards: list[dict]) -> dict:
+    def get_random_reward(self, rewards: dict) -> dict:
         """
         Get a random reward for a user in a specific channel.
 
         Args:
-            rewards (list[dict]): A list of reward dictionaries.
+            rewards (dict): A dictionary of reward categories and their corresponding rewards.
 
         Returns:
             dict: A dictionary representing the reward.
