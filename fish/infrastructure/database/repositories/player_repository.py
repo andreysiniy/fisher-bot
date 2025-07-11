@@ -11,31 +11,29 @@ class PlayerProfileRepository(PlayerProfileRepositoryAbstract):
 
     async def get_or_create_profile(self, user_id: str, username: str, channel_info: dict) -> PlayerProfile:
         async with self.session_factory() as session:
-            stmt = (
-                select(PlayerProfile)
-                .join(PlayerProfile.user)
-                .join(PlayerProfile.channel)
-                .where(User.twitch_id == user_id, Channel.name == channel_info["name"])
-                .options(
-                    selectinload(PlayerProfile.se_stats),
-                    selectinload(PlayerProfile.fish_stats),
-                    selectinload(PlayerProfile.unlocked_rewards),
-                    selectinload(PlayerProfile.user),
-                    selectinload(PlayerProfile.channel)
-                )
-            )
-        
-            result = await session.execute(stmt)
-            profile = result.scalar_one_or_none()
-
-            if profile:
-                if profile.user.twitch_name != username:
-                    profile.user.twitch_name = username
-                
-                await session.commit()
-                return profile
-            
             async with session.begin():
+                stmt = (
+                    select(PlayerProfile)
+                    .join(PlayerProfile.user)
+                    .join(PlayerProfile.channel)
+                    .where(User.twitch_id == user_id, Channel.name == channel_info["name"])
+                    .options(
+                        selectinload(PlayerProfile.se_stats),
+                        selectinload(PlayerProfile.fish_stats),
+                        selectinload(PlayerProfile.unlocked_rewards),
+                        selectinload(PlayerProfile.user),
+                        selectinload(PlayerProfile.channel)
+                    )
+                )
+        
+                result = await session.execute(stmt)
+                profile = result.scalar_one_or_none()
+
+                if profile:
+                    if profile.user.twitch_name != username:
+                        profile.user.twitch_name = username
+                
+                    return profile
                 
                 user_stmt = select(User).where(User.twitch_id == user_id)
                 user = (await session.execute(user_stmt)).scalar_one_or_none()
