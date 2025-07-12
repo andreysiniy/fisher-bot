@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, ForeignKey, UniqueConstraint
+from sqlalchemy import Column, Integer, String, ForeignKey, UniqueConstraint, Float
 from sqlalchemy.orm import relationship
 from fish.core.entities.base import Base
 
@@ -16,7 +16,8 @@ class PlayerProfile(Base):
     __tablename__ = 'player_profiles'
 
     id = Column(Integer, primary_key=True)
-    
+    cooldown_expiration = Column(Float, default=0.0, nullable=False)
+
     user_id = Column(Integer, ForeignKey('users.id'), nullable=False)
     channel_id = Column(Integer, ForeignKey('channels.id'), nullable=False)
 

@@ -60,6 +60,7 @@ class PlayerProfileRepository(PlayerProfileRepositoryAbstract):
         async with self.session_factory() as session:
             existing_profile = await session.get(PlayerProfile, profile.id)
             if existing_profile:
+                existing_profile.cooldown_expiration = profile.cooldown_expiration
                 existing_profile.user.twitch_name = profile.user.twitch_name
                 existing_profile.channel.name = profile.channel.name
                 existing_profile.se_stats = profile.se_stats
