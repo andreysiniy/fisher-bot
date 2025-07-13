@@ -13,7 +13,7 @@ class FishingUseCase:
         select_reward_use_case: SelectRewardUseCase,
         unlock_reward_use_case: UnlockRewardUseCase,
         apply_multiplier_use_case: ApplyMultiplierUseCase,
-        player_profile_repository: PlayerProfileRepositoryAbstract = PlayerProfileRepositoryAbstract
+        player_profile_repository: PlayerProfileRepositoryAbstract
     ):
         self.prepare_fishing_context_use_case = prepare_fishing_context_use_case
         self.select_reward_use_case = select_reward_use_case
