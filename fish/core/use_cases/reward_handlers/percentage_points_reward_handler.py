@@ -6,7 +6,7 @@ class PercentagePointsRewardHandler(BaseRewardHandler):
 
     def handle(self) -> dict:
         actions = super().handle()
-        actions["actions"].extend(self.handle_percentage())
+        actions["actions"].extend(self.handle_percentage().get("actions", []))
         return actions
     
     def handle_percentage(self) -> dict:    
