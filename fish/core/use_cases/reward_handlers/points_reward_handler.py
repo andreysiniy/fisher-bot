@@ -7,7 +7,7 @@ class PointsRewardHandler(BaseRewardHandler):
     def handle(self) -> dict:
         actions = super().handle()
         
-        points = self.reward.get("points", 0)
+        points = self.reward.get("value", 0)
         username = self.user_ctx.get("username", "")
         delay = self.reward.get("delay", 0)
 
