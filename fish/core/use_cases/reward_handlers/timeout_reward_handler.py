@@ -6,7 +6,11 @@ class TimeoutRewardHandler(BaseRewardHandler):
 
     def handle(self) -> dict:
         actions = super().handle()
-
+        actions["actions"].extend(self.handle_timeout().get("actions", []))
+        return actions
+    
+    def handle_timeout(self) -> dict:
+        actions = {"actions": []}
         seconds = self.reward.get("seconds", 0)
         username = self.user_ctx.get("username", "")
         delay = self.reward.get("delay", 0)
@@ -23,7 +27,11 @@ class TimeoutRewardHandler(BaseRewardHandler):
                 }
             })
             actions["actions"].append({
-                "message": timeout_message
+                "message": {
+                    "username": username,
+                    "seconds": int(seconds),
+                    "message":  timeout_message
+                }
             })
-
+        
         return actions

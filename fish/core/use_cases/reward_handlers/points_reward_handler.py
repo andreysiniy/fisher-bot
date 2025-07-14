@@ -6,7 +6,11 @@ class PointsRewardHandler(BaseRewardHandler):
 
     def handle(self) -> dict:
         actions = super().handle()
-        
+        actions["actions"].extend(self.handle_points().get("actions", []))
+        return actions
+    
+    def handle_points(self) -> dict:
+        actions = {"actions": []}
         points = self.reward.get("value", 0)
         username = self.user_ctx.get("username", "")
         delay = self.reward.get("delay", 0)
@@ -36,5 +40,4 @@ class PointsRewardHandler(BaseRewardHandler):
                     "message": self.rewards_pool.get("points_message", "")
                 }
             })
-
         return actions

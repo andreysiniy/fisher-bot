@@ -6,13 +6,16 @@ class PercentagePointsRewardHandler(BaseRewardHandler):
 
     def handle(self) -> dict:
         actions = super().handle()
-
+        actions["actions"].extend(self.handle_percentage())
+        return actions
+    
+    def handle_percentage(self) -> dict:    
         percentage = self.reward.get("percentage", 0)
         username = self.user_ctx.get("username", "")
         delay = self.reward.get("delay", 0)
         user_points = self.user_ctx.get("points", 0)
         points_to_add = int(user_points * percentage)
-
+        actions = {"actions": []}
 
         if points_to_add > 0:
             actions["actions"].append({
