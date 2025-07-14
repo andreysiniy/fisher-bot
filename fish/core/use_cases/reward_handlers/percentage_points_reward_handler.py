@@ -33,7 +33,11 @@ class PercentagePointsRewardHandler(BaseRewardHandler):
 
         if self.rewards_pool.get("points_message"):
             actions["actions"].append({
-                "message": self.rewards_pool.get("points_message")
+                "message": {
+                    "username": username,
+                    "points": points_to_add,
+                    "message": self.rewards_pool.get("points_message", "")
+                }
             })
 
         return actions
