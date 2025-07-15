@@ -95,3 +95,4 @@ class PointsProviderAbstract(Protocol):
         Returns:
             dict: Dictionary that contains a list of items containing userpoints of users in the specific limits.
         """
+        pass
