@@ -221,3 +221,49 @@ class StreamElementsApi(PointsProviderAbstract):
                     print(f"Failed to get user by rank {rank} on channel_id: {channel_id}: {response.status}")
                     print(f"Response: {error_text}")
                     response.raise_for_status()
+
+    async def list_top_userpoints(self, limit: int, offset: int, channel_id: str):
+        """
+        Retrieve the userpoints top in a specific channel
+
+        Args:
+            limit (int): Number of items per page.
+            offset (int): Number of items to be skipped.
+            channel_id (str): The ID of the channel.
+        
+        Returns:
+            dict: Dictionary that contains a list of items containing userpoints of users in the specific limits.
+        """
+        async with ClientSession() as session:
+            url = f"https://api.streamelements.com/kappa/v2/points/{channel_id}/top?limit={limit}&offset={offset}"
+            headers = {
+                "Accept": "application/json; charset=utf-8",
+                "Authorization": f"Bearer {self.jwt}"
+            }        
+            async with session.get(url, headers=headers) as response:
+                if response.status == 200:
+                    data = await response.json()
+                    if "users" in data and len(data["users"]) > 0:
+                        users = data.get("users", [])
+                        print(f"Users within following limits (limit: {limit}; offset: {offset}) on channel_id: {channel_id} are {users}")
+                        logger.info(f"Users within following limits (limit: {limit}; offset: {offset}) on channel_id: {channel_id} are {users}")
+                        return {"users": users}
+                    else:
+                        print(f"No users found within following limits (limit: {limit}; offset: {offset}) on channel_id: {channel_id}")
+                        logger.warning(f"No users found within following limits (limit: {limit}; offset: {offset}) on channel_id: {channel_id}")
+                        return {"users": []}
+                else:
+                    error_text = await response.text()
+                    logger.error(
+                        f"Failed to get users list in specific limits. API returned status {response.status}.",
+                        extra={
+                            'limit': limit,
+                            'offset': offset,
+                            'channel_id': channel_id,
+                            'status_code': response.status,
+                            'response_text': error_text
+                        }
+                    )
+                    print(f"Failed to get users list in specific limits (limit: {limit}; offset: {offset}) on channel_id: {channel_id}: {response.status}")
+                    print(f"Response: {error_text}")
+                    response.raise_for_status()

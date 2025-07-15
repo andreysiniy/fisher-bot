@@ -81,3 +81,17 @@ class PointsProviderAbstract(Protocol):
             str: The username of the user with the specified rank.
         """
         pass
+
+    @abstractmethod
+    async def list_top_userpoints(self, limit: int, offset: int, channel_id: str) -> dict:
+        """
+        Retrieve the userpoints top in a specific channel
+
+        Args:
+            limit (int): Number of items per page.
+            offset (int): Number of items to be skipped.
+            channel_id (str): The ID of the channel.
+        
+        Returns:
+            dict: Dictionary that contains a list of items containing userpoints of users in the specific limits.
+        """
