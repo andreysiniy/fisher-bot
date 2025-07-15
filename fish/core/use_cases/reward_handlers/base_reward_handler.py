@@ -11,9 +11,14 @@ class BaseRewardHandler:
 
     def handle(self) -> dict:
         actions = []
+        username = self.user_ctx.get("username", "")
+        base_msg = { "message":  {
+            "username": username,
+            "message": self.rewards_pool.get("base_message", "") + self.reward.get("message", "")
+            }
+        }
 
-        base_msg = { "message": self.rewards_pool.get("base_message", "") + self.reward.get("message", "")}
-
-        actions.append(base_msg)
+        if base_msg.get("message"):
+            actions.append(base_msg)
 
         return {"actions": actions}
