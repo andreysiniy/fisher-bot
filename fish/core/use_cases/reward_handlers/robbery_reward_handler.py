@@ -37,11 +37,13 @@ class RobberyRewardHandler(BaseRewardHandler):
             actions["actions"].extend(self.handle_points_swap(username, victim, points_to_rob, delay).get("actions", []))
         if self.reward.get("robbery_message"):
             actions["actions"].append({
-                "username": username,
-                "points": points_to_rob,
-                "victim": victim,
-                "victim_points": victim_points,
-                "message": self.reward.get("robbery_message", "")
+                "message": {
+                    "username": username,
+                    "points": points_to_rob,
+                    "victim": victim,
+                    "victim_points": victim_points,
+                    "message": self.reward.get("robbery_message", "")
+                }
             })
 
         return actions
