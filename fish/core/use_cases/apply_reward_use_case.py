@@ -62,6 +62,10 @@ class ApplyRewardUseCase:
             raise ValueError("Couldn't get channel StreamElements ID for userpoints preparation")
         
         current_points = await self.points_provider.get_user_points(user=username, channel_id=channel_se_id)
+        
+        if not current_points:
+            raise ValueError(f"Couldn't get {username} points on channel id : {channel_se_id}")
+
         updated_ctx.update({"points": current_points})
 
         return updated_ctx
