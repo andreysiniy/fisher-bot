@@ -20,7 +20,7 @@ class TwitchActionsProviderAbstract(Protocol):
         pass
 
     @abstractmethod
-    async def send_formatted_message(self, channel_name: str, message: str) -> None:
+    async def send_message(self, channel_name: str, message: str) -> None:
         """
         Send a formatted message to the Twitch channel.
 
