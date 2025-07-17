@@ -112,7 +112,7 @@ class ApplyRewardUseCase:
         )
 
         if not response:
-            raise ValueError(f"Couldn't add points to {username} on channel {channel_se_id}")
+            raise ValueError(f"Couldn't remove points from {username} on channel {channel_se_id}")
         
         updated_ctx.update({"points": response.get("newAmount")})
 
