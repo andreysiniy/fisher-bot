@@ -2,6 +2,7 @@ from fish.core.use_cases.reward_handlers.reward_handler_factory import RewardHan
 from fish.core.use_cases.fish_use_case import FishingUseCase
 from fish.core.interfaces.twitch_actions_provider_abs import TwitchActionsProviderAbstract
 from fish.core.interfaces.points_provider_abs import PointsProviderAbstract
+import fish.core.helpers.message_utils as MessageUtils
 import asyncio
 
 class ApplyRewardUseCase:
@@ -16,17 +17,26 @@ class ApplyRewardUseCase:
         self.reward_handler_factory = reward_handler_factory
         
     async def execute(self, user_ctx: dict, reward: dict, rewards_pool: dict):
+        prepared_ctx = self._handle_preparations(user_ctx, reward)
         handler = self.reward_handler_factory.get_handler(
-            user_ctx=user_ctx,
+            user_ctx=prepared_ctx,
             reward=reward,
             rewards_pool=rewards_pool
         )
         actions = handler.handle().get("actions", [])
 
 
-
         for action in actions:
-            pass
+            actions_map = {
+                'message': lambda: self._send_message(action_ctx=action.get("message"), user_ctx=prepared_ctx),
+                'timeout': lambda: self._timeout_user(action_ctx=action.get("timeout"), user_ctx=prepared_ctx),
+                'add_points': lambda: prepared_ctx.update(self._add_points(action_ctx=action.get("add_points"), user_ctx=prepared_ctx)),
+                'remove_points': lambda: prepared_ctx.update(self._remove_points(action_ctx=action.get("remove_points"), user_ctx=prepared_ctx))
+            }
+            for key in actions_map:
+                if key in action:
+                    await actions_map[key]()
+            
 
     async def _prepare_robbery(self, user_ctx: dict, reward: dict) -> dict:
         updated_ctx = user_ctx
@@ -116,4 +126,43 @@ class ApplyRewardUseCase:
         
         updated_ctx.update({"points": response.get("newAmount")})
 
-        return updated_ctx   
+        return updated_ctx
+
+    async def _timeout_user(self, action_ctx: dict, user_ctx: dict):
+        channel_name = user_ctx.get("channel_name")
+        username = action_ctx.get("username")
+        seconds = action_ctx.get("timeout")
+        delay = action_ctx.get("delay", 0)
+        reason = action_ctx.get("reason")
+        await asyncio.sleep(delay)
+        await self.twitch_actions_provider.timeout_user(channel_name, username, seconds, reason)
+    
+    async def _send_message(self, action_ctx: dict, user_ctx: dict):
+        channel_name = user_ctx.get("channel_name")
+
+        if not channel_name:
+            raise ValueError("Couldn't get the channel name for messsage sending")
+
+        format_map = {
+            'username': action_ctx.get("username", "unknown"),
+            'value': MessageUtils.format_large_number(action_ctx.get("points", 0)),
+            'time': MessageUtils.format_time(action_ctx.get("seconds", 0)),
+            'victim': action_ctx.get("victim", "unknown"),
+            'victim_points': MessageUtils.format_large_number(action_ctx.get("victim_points", 0)),
+            'bullets': action_ctx.get("bullets", 0),
+            'chambers': action_ctx.get("chambers", 0),
+            'percentage': action_ctx.get("percentage", 0),
+            'delay': MessageUtils.format_time(action_ctx.get("seconds", 0)),
+            'total_points': MessageUtils.format_large_number(user_ctx.get("points", 0))
+        }
+        message = action_ctx.get("message", "").format_map(format_map)
+        await asyncio.sleep(action_ctx.get("delay", 0))
+        await self.twitch_actions_provider.send_message(channel_name, message) 
+
+    async def _handle_preparations(self, user_ctx: dict, reward: dict):
+        updated_ctx = user_ctx
+        if "percentage" in reward:
+            updated_ctx = await self._prepare_userpoints(updated_ctx)
+        if reward.get("type") == "robbery":
+            updated_ctx = await self._prepare_robbery(updated_ctx, reward)
+        return updated_ctx
