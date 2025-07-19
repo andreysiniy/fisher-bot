@@ -2,8 +2,8 @@
     "base_message": "{username} is fishing! !fish ... ",
     "base_multiplier": 1.0,
     "sub_multiplier": 1.0,
-    "base_cooldown": 420,
-    "sub_cooldown": 300,
+    "base_cooldown": 720,
+    "sub_cooldown": 600,
     "cmds": {
         "points": "!addpoints {username} {value}",
         "timeout": "",
@@ -36,7 +36,7 @@
             },
             {
                 "weight": 1443,
-                "message": "🧊 0NotAllowed"
+                "message": "fishbuck 0NotAllowed"
             },
             {
                 "weight": 1443,
@@ -105,153 +105,160 @@
             {
                 "weight": 2050,
                 "message": "YOU RN --> waitingforfish"
+            },
+            {
+                "unlocks": [ "dupe_3" ],
+                "unlock_message": "@{username} this artifact, it is quite the rare find! It posess the power to multiply your fishes, it will surely come in handy later...",
+                "weight": 100,
+                "message": "oh wait? what's this? ...'"
             }
+
         ],
         "points": [
             {
-                "value": 100,
+                "value": 2,
                 "weight": 2000,
-                "message": "🥾 you pulled garbage +{value}🧊"
+                "message": "🥾 you pulled garbage +{value} fishbuck"
             },
             {
-                "value": 100,
+                "value": 2,
                 "weight": 2000,
-                "message": "🌿 you pulled garbage +{value}🧊"
+                "message": "🌿 you pulled garbage +{value} fishbuck"
             },
             {
-                "value": 500,
+                "value": 5,
                 "weight": 2000,
-                "message": "🐟 common carp! +{value}🧊"
+                "message": "🐟 common carp! +{value} fishbuck"
             },
             {
-                "value": 500,
+                "value": 5,
                 "weight": 2000,
-                "message": "🐡 common blowfish! +{value}🧊 "
+                "message": "🐡 common blowfish! +{value} fishbuck "
             },
             {
-                "value": 1000,
+                "value": 5,
                 "weight": 2000,
-                "message": "🐠 common clownfish! +{value}🧊"
+                "message": "🐠 common clownfish! +{value} fishbuck"
             },
             {
-                "value": 2000,
+                "value": 10,
                 "weight": 2000,
-                "message": "AUGH uncommon meme fish! +{value}🧊"
+                "message": "AUGH uncommon meme fish! +{value} fishbuck"
             },
             {
-                "value": 2000,
+                "value": 10,
                 "weight": 2000,
-                "message": "Joel uncommon meme fish! +{value}🧊"
+                "message": "Joel uncommon meme fish! +{value} fishbuck"
             },
             {
-                "value": 3500,
+                "value": 10,
                 "weight": 2000,
-                "message": "!fis uncommon meme fish! +{value}🧊"
+                "message": "!fis uncommon meme fish! +{value} fishbuck"
             },
             {
-                "value": 3500,
+                "value": 10,
                 "weight": 2000,
-                "message": "catfish uncommon meme fish! +{value}🧊"
+                "message": "catfish uncommon meme fish! +{value} fishbuck"
             },
             {
-                "value": 10000,
+                "value": 15,
                 "weight": 1500,
-                "message": "you fished up kubeks remains 🥀🥀🥀 they actually sell for a nice penny! +{value}🧊 "
+                "message": "you fished up kubeks remains 🥀🥀🥀 they sell somehow +{value} fishbuck "
             },
             {
-                "value": 10000,
+                "value": 5,
                 "weight": 1500,
-                "message": "You fished up a temu bitcoin, according to snowy its worth alot! +{value}🧊"
+                "message": "You fished up a temu bitcoin, according to snowy its worth alot! (its fucking cap) +{value} fishbuck"
             },
             {
-                "value": 15000,
+                "value": 20,
                 "weight": 1500,
-                "message": "forsenPirate YARRRR +{value}🧊"
+                "message": "forsenPirate YARRRR +{value} fishbuck"
             },
             {
-                "value": 20000,
+                "value": 35,
                 "weight": 1025,
-                "message": "wow rare golden pepe Goldge +{value}🧊"
+                "message": "wow rare golden pepe Goldge +{value} fishbuck"
             },
             {
-                "value": 50000,
+                "value": 20,
                 "weight": 1025,
-                "message": "you fished up an ancient voice recorder containing tsuki's voice Oldge it actually sells for a nice price +{value}🧊"
+                "message": "you fished up an ancient voice recorder containing tsuki's voice Oldge it sells for +{value} fishbuck"
             },
             {
-                "value": 50000,
+                "value": 75,
                 "weight": 1025,
-                "message": "YOU PULLED YOURMOTHER +{value}🧊"
+                "message": "YOU PULLED YOURMOTHER +{value} fishbuck"
             },
             {
-                "value": 100000,
+                "value": 150,
                 "weight": 760,
-                "message": "Shigechi HAAAAAAAARVESTO +{value}🧊"
+                "message": "Shigechi HAAAAAAAARVESTO +{value} fishbuck"
             },
             {
-                "value": 150000,
+                "value": 100,
                 "weight": 760,
-                "message": "jackpot! cheshire's secret goon stash! thats a BIGWIN !!! +{value}🧊"
+                "message": "you fished cheshire's secret goon stash! decent sale +{value} fishbuck"
             },
             {
-                "value": 75000,
+                "value": 100,
                 "weight": 800,
-                "message": "FORSEN!? forsenSwim +{value}🧊"
+                "message": "FORSEN!? forsenSwim +{value} fishbuck"
+            },
+            {
+                "value": -1,
+                "weight": 1085,
+                "message": "🍔 for miko BORGIR {value} fishbuck"
+            },
+            {
+                "value": -5,
+                "weight": 1085,
+                "message": "your line unfortunately snapped ... {value} fishbuck"
+            },
+            {
+                "value": -25,
+                "weight": 1085,
+                "message": "oop they found your name on epsteins list gang, thats a {value} fishbuck fine RIPBOZO"
+            },
+            {
+                "value": -15,
+                "weight": 1085,
+                "message": "oh thats blitzels oshawott on the line, quick release it before it...?! {value} fishbuck ... ahhh fucking unlucky"
+            },
+            {
+                "value": -75,
+                "weight": 1085,
+                "message": "fuck fishing... you decide to go home and hop on cs trading, and as a result you get scammed of all your skins gg {value} fishbuck"
             },
             {
                 "value": -20,
                 "weight": 1085,
-                "message": "🍔 for miko BORGIR {value}🧊"
+                "message": "MEGA CRASHOUT RIP YOUR ALL YOUR FISHING GEAR!!! GAESAEKKIA {value} fishbuck"
             },
             {
                 "value": -50,
                 "weight": 1085,
-                "message": "your line unfortunately snapped ... {value}🧊"
+                "message": "while fishing the IRS unfortunately found your  illegal money laundering business! fucking unlucky... {value} fishbuck"
             },
             {
-                "value": -2000,
-                "weight": 1085,
-                "message": "oop they found your name on epsteins list gang, thats a {value}🧊 fine RIPBOZO"
-            },
-            {
-                "value": -4000,
-                "weight": 1085,
-                "message": "oh thats blitzels oshawott on the line, quick release it before it...?! {value}🧊 ... ahhh fucking unlucky"
-            },
-            {
-                "value": -5000,
-                "weight": 1085,
-                "message": "fuck fishing... you decide to go home and hop on cs trading, and as a result you get scammed of all your skins gg {value}🧊"
-            },
-            {
-                "value": -5000,
-                "weight": 1085,
-                "message": "MEGA CRASHOUT RIP YOUR ALL YOUR FISHING GEAR!!! GAESAEKKIA {value}🧊"
-            },
-            {
-                "value": -10000,
-                "weight": 1085,
-                "message": "while fishing the IRS unfortunately found your  illegal money laundering business! fucking unlucky... {value}🧊"
-            },
-            {
-                "value": -50000,
+                "value": -5,
                 "weight": 800,
-                "message": "jakeing AHH IM JAKEING IT AHH IM JAKEING IT AHHH IM JAKEING IT {username} I AM FUCKING JAKEING IT {value}🧊"
+                "message": "jakeing AHH IM JAKEING IT AHH IM JAKEING IT AHHH IM JAKEING IT {username} I AM FUCKING JAKEING IT {value} fishbuck"
             }
         ],
         "percentage_points": [
             {
-                "percentage": -0.1,
-                "weight": 1450,
+                "percentage": -0.2,
+                "weight": 1000,
                 "message": "unlucky, snowy taxes are calling {percentage} sunowiELECTRO"
             },
             {
-                "percentage": -0.2,
+                "percentage": -0.1,
                 "weight": 1000,
                 "message": "STOCK MARKET CRASH {percentage} 📉🔥"
             },
             {
-                "percentage": 0.1,
+                "percentage": 0.15,
                 "weight": 2000,
                 "message": "STOCKS LOOKING BULLISH TODAY +{percentage} 📈✅"
             },
@@ -261,11 +268,9 @@
                 "message": "LUCKY SNOWY VIEWER PAYOUT (ITS BASICALLY NOTHING) +{percentage}"
             },
             {
-                "unlocks": ["dupe_3"],
-                "unlock_message": "THE HEAT IS ON, @{username} YOUR LITTLE \"HEIST\" DIDN'T GO UNNOTICED! DR. OSC HAS A NEW DEAL ON THE TABLE, BUT THE RISKS ARE BIGGER... EXPECT MULTIPLIED FISHES... ONE DAY...",
-                "percentage": 0.5,
+                "percentage": 0.35,
                 "weight": 1050,
-                "message": "INSTEAD OF FISHING I GUESS YOU ROBBED A FUCKING BANK! CINEMA +{percentage}🧊"
+                "message": "INSTEAD OF FISHING I GUESS YOU ROBBED A FUCKING BANK! CINEMA +{percentage} fishbuck"
             }
         ],
         "russian_roulette": [
@@ -274,7 +279,7 @@
                 "chambers": 6,
                 "bullets": 1,
                 "penalty_type": "percentage",
-                "percentage": 0.3,
+                "percentage": 0.20,
                 "shot_message": "💥 -{percentage} points ☠",
                 "safe_message": "*Click* ... safe! live to fish another day",
                 "message": "you fished up a loaded revolver, your sanity can't take this anymore! alright {bullets} bullet here goes nothing! Enough"
@@ -284,7 +289,7 @@
                 "chambers": 6,
                 "bullets": 2,
                 "penalty_type": "points",
-                "value": 10000,
+                "value": 50,
                 "shot_message": "💥 -{value} points, yeowch!",
                 "safe_message": "*Click* ... safe! live to fish another day",
                 "message": "you fished up a loaded revolver, your sanity can't take this anymore! alright {bullets} bullets here goes nothing! Enough"
@@ -312,7 +317,7 @@
                 "chambers": 2,
                 "bullets": 1,
                 "penalty_type": "points",
-                "value": 20000,
+                "value": 50,
                 "shot_message": "💥 -{value} points, yeowch!",
                 "safe_message": "*Click* ... safe! live to fish another day",
                 "message": "you fished up a loaded shotgun NAILS time for a makeout session! alright {bullets} shell in the chamber 50/50 here goes nothing! Enough"
@@ -322,7 +327,7 @@
                 "chambers": 2,
                 "bullets": 1,
                 "penalty_type": "percentage",
-                "percentage": 0.3,
+                "percentage": 0.20,
                 "shot_message": "💥 -{percentage} points ☠",
                 "safe_message": "*Click* ... safe! live to fish another day",
                 "message": "you fished up a loaded shotgun NAILS time for a makeout session! alright {bullets} shell in the chamber 50/50 here goes nothing! Enough"
@@ -332,10 +337,10 @@
             {
                 "id": "dupe_3",
                 "locked": true,
-                "weight": 200,
+                "weight": 400,
                 "amount": 3,
                 "delay": 2,
-                "message": "SEVERE SERVER LAG DETECTED. @{username} your !fish command was processed {amount} times. Please do not report this convenient exploit"
+                "message": "the artifact glows! ✨ ... SEVERE SERVER LAG DETECTED⚠ @{username} your !fish command was processed {amount} times."
             }
         ],
         "robbery": [
@@ -343,26 +348,26 @@
                 "weight": 3200,
                 "message": "you fished up a loaded revolver, time for a robbery!",
                 "robbery_message": "{victim} got robbed by {username} for {value} points!",
-                "value": 15000,
-                "range": 7
+                "value": 100,
+                "range": 5
             },
             {
                 "weight": 1800,
                 "message": "you fished up a loaded revolver, time for a robbery!",
                 "robbery_message": "{victim} got robbed by {username} for {percentage} points!",
-                "percentage": 0.1,
-                "range": 7
+                "percentage": 0.10,
+                "range": 5
             }
         ],
         "misc": [
             {
                 "title": "Jigsaw",
-                "weight": 100,
+                "weight": 50,
                 "message": "jigsaw 🃏 FOR YOUR FINAL CHALLENGE @{username} TWO CHOICES, GAMBLE ALL OR LOSE IT ALL🃏 jigsaw"
             },
             {
                 "title": "VTUBER TIME",
-                "weight": 800,
+                "weight": 300,
                 "message": "HOLY BOOBA YOU FISHED UP AN ANIME girl!? FREE VTUBER TIME pogs -> sunowi"
             },
             {
